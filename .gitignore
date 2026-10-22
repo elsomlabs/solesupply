@@ -13,6 +13,10 @@
 /.next/
 /out/
 
+# cloudflare
+.wrangler/
+solesupply-cloudflare.zip
+
 # production
 /build
 
