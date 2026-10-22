@@ -1,0 +1,10 @@
+{
+  "frameCount": 115,
+  "fps": 24,
+  "width": 538,
+  "height": 538,
+  "durationSeconds": 4.7917,
+  "pattern": "{index:03d}.webp",
+  "alpha": true,
+  "notes": "Pre-keyed transparent frames at constant rotation speed (360/115 degrees per frame). Frame 114 -> 0 is a normal step; loop with frameIndex % frameCount."
+}

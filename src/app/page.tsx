@@ -12,26 +12,21 @@ import { apparel, laces, sneakers } from "@/lib/products";
 import styles from "@/components/product/product.module.css";
 
 const BRANDS = [
-  "Supreme",
-  "Bape",
-  "New Era",
-  "Nike",
-  "Hoka",
-  "Stance",
-  "Jordan",
-  "New Balance",
-  "Stüssy",
+  { name: "Supreme", src: "/logos/supreme.svg", height: 28 },
+  { name: "Bape", src: "/logos/bape.webp", height: 44, color: true },
+  { name: "New Era", src: "/logos/new-era.jpg", height: 36, color: true },
+  { name: "Nike", src: "/logos/nike.svg", height: 20 },
+  { name: "Hoka", src: "/logos/hoka.svg", height: 22 },
+  { name: "Stance", src: "/logos/stance.webp", height: 26 },
+  { name: "Jordan", src: "/logos/jordan.svg", height: 40 },
+  { name: "New Balance", src: "/logos/new-balance.svg", height: 28 },
+  { name: "Stüssy", src: "/logos/stussy.svg", height: 48 },
 ];
 
 export default function Home() {
   return (
     <main>
-      <DropHero
-        href="#"
-        artSrc="/images/hero-art.webp"
-        shoes={["/images/hero-shoe-left.webp", "/images/hero-shoe-right.webp"]}
-        ctaLabel="Shop now"
-      />
+      <DropHero href="#" ctaLabel="Shop now" />
       <BrandStrip brands={BRANDS} />
       <section className={`${styles.sec} ${styles.wrap}`} aria-labelledby="h-sneakers">
         <ProductRow
