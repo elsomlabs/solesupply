@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoleSupply Storefront</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..900&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: white gallery storefront — sticky white header, one full-bleed blob-art drop hero, quiet product rows, floating-card editorials. Light-only by design: product photography is shot on white. */
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-tile: #f4f4f4;
+  --ink: #0a0a0a;
+  --ink-2: #333333;
+  --ink-muted: #5c5c5c;
+  --line: #e6e6e6;
+  --action: #0a0a0a;
+  --action-hover: #2b2b2b;
+  --on-action: #ffffff;
+  --drop-ground: #0a0a0a;
+  --on-drop-ground: #ffffff;
+  --sale: #c8102e;
+  --focus: #2f5bff;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --shadow-float: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+@media (min-width: 900px) { :root { --gutter: max(56px, env(safe-area-inset-left, 0px)); --gutter-r: max(56px, env(safe-area-inset-right, 0px)); } }
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+body { background: var(--surface); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--surface); }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.wrap { padding-left: var(--gutter); padding-right: var(--gutter-r); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Header */
+.hdr { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--surface); }
+.hdr-in { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 64px; padding-block: 8px; }
+.nav { display: flex; gap: 16px; }
+.nav a { font-size: 13px; line-height: 20px; color: var(--ink-2); text-decoration: none; }
+.nav a:hover, .nav a[aria-current] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.mark { font-family: var(--font-display); font-stretch: 125%; font-weight: 900; font-size: 15px; line-height: .92; letter-spacing: -.01em; text-transform: uppercase; text-align: center; text-decoration: none; color: var(--ink); }
+.utils { display: flex; justify-content: flex-end; align-items: center; gap: 4px; }
+.cur { background: none; border: 0; font-size: 12px; color: var(--ink); display: inline-flex; align-items: center; gap: 6px; padding: 6px; cursor: pointer; }
+.cur i { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(#1b3a8a 0 50%, #b22234 50% 100%); display: inline-block; }
+.ib { width: 36px; height: 36px; display: inline-grid; place-items: center; background: none; border: 0; color: var(--ink); cursor: pointer; border-radius: 50%; padding: 0; }
+.ib:hover { background: var(--surface-tile); }
+.ib svg { width: 20px; height: 20px; }
+.menu { display: none; }
+
+/* Hero */
+.hero { position: relative; background: var(--drop-ground) center / cover no-repeat; height: clamp(300px, 32vw, 620px); overflow: hidden; display: block; text-decoration: none; }
+.hero-shoes { position: absolute; left: 50%; top: 50%; width: min(64vw, 900px); aspect-ratio: 16 / 9; transform: translate(-50%, -52%); }
+.hero-shoes img { position: absolute; width: 56%; height: auto; filter: drop-shadow(0 18px 24px rgba(0,0,0,.45)); }
+.hero-shoes .s1 { left: 0; top: 18%; transform: rotate(14deg); }
+.hero-shoes .s2 { right: 0; top: 0; transform: rotate(-9deg); }
+.hero-cta { position: absolute; left: 50%; bottom: 7%; transform: translateX(-50%); color: var(--on-drop-ground); font-size: 13px; font-weight: 500; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+.hero:hover .hero-cta { text-decoration: underline; text-underline-offset: 4px; }
+.hero-pay { position: absolute; right: calc(var(--gutter-r) - 24px); top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: center; color: var(--on-drop-ground); font: 600 11px/1 var(--font-sans); letter-spacing: .04em; opacity: .9; }
+
+/* Brand strip */
+.brands { border-bottom: 1px solid var(--line); overflow: hidden; }
+.brands ul { list-style: none; margin: 0; display: flex; justify-content: space-between; align-items: center; gap: 40px; padding-block: 22px; overflow-x: auto; scrollbar-width: none; }
+.brands ul::-webkit-scrollbar { display: none; }
+.brands li { font-family: var(--font-display); font-weight: 800; font-size: 17px; letter-spacing: -.02em; text-transform: uppercase; white-space: nowrap; color: var(--ink); }
+.brands li:nth-child(3n+2) { font-stretch: 125%; font-weight: 900; font-size: 15px; }
+.brands li:nth-child(3n) { font-weight: 500; letter-spacing: .06em; font-size: 14px; }
+
+/* Section heads */
+.sec { padding-top: 64px; }
+.shead { text-align: center; margin-bottom: 24px; }
+.shead-row { display: inline-flex; align-items: center; gap: 28px; }
+.shead h2 { margin: 0; font-family: var(--font-sans); font-weight: 400; font-size: 20px; line-height: 24px; letter-spacing: -.02em; text-transform: uppercase; }
+.shead .ib svg { width: 18px; height: 18px; }
+.shead .ib[disabled] { color: #b5b5b5; cursor: default; background: none; }
+.viewall { display: inline-block; margin-top: 8px; font-size: 9px; line-height: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; }
+.lhead { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+.lhead h2 { margin: 0; font-weight: 400; font-size: 20px; line-height: 24px; letter-spacing: -.01em; }
+.lhead a { font-size: 12px; text-decoration: none; }
+.lhead a:hover { text-decoration: underline; }
+
+/* Rows */
+.row { display: grid; grid-auto-flow: column; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+.row::-webkit-scrollbar { display: none; }
+.row > * { scroll-snap-align: start; min-width: 0; }
+.row-5 { grid-auto-columns: calc((100% - 4 * 24px) / 5); }
+.row-laces { grid-auto-columns: calc((100% - 5 * 24px) / 5.35); }
+.row-4 { grid-auto-columns: calc((100% - 3 * 24px) / 4); }
+
+/* Product card */
+.card, .pcard { position: relative; }
+.card { text-decoration: none; color: var(--ink); display: block; }
+.card-media { position: relative; background: var(--surface-tile); aspect-ratio: 4 / 5; display: grid; place-items: center; overflow: hidden; }
+.card-media img { width: 82%; height: auto; transition: transform 300ms ease-out; }
+.card:hover .card-media img { transform: translateY(-4px); }
+.badges { position: absolute; top: 8px; left: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.bdg { font-size: 9px; line-height: 11px; padding: 4px 7px; border-radius: 2px; white-space: nowrap; }
+.bdg-new { background: #fff; color: var(--ink-2); }
+.bdg-stock { background: #2b2b2b; color: #fff; }
+.bdg-sale { background: #fff; color: var(--sale); font-weight: 600; }
+.card-name { margin: 14px 0 4px; font-size: 11.5px; line-height: 16px; letter-spacing: .01em; text-transform: uppercase; color: var(--ink-2); }
+.card:hover .card-name { text-decoration: underline; text-underline-offset: 2px; }
+.price { font-size: 11.5px; line-height: 16px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.price small { font-size: 9px; color: var(--ink-muted); margin-right: 5px; }
+.price .now { color: var(--sale); margin-right: 6px; }
+.price s { color: var(--ink-muted); }
+
+/* Plain cards (laces, apparel) */
+.pcard { text-decoration: none; color: var(--ink); display: block; }
+.pcard-media { aspect-ratio: 1 / 1.06; display: grid; place-items: center; background: var(--surface); }
+.pcard-media img { max-height: 100%; width: auto; object-fit: contain; }
+.row-laces .pcard-media img { height: 100%; }
+.row-4 .pcard-media { aspect-ratio: 1; }
+.row-4 .pcard-media img { width: 100%; height: 100%; object-fit: contain; }
+.pcard-name { margin: 12px 0 2px; font-size: 12px; line-height: 17px; color: var(--ink); }
+.pcard:hover .pcard-name { text-decoration: underline; text-underline-offset: 2px; }
+.pcard .price { font-size: 11px; }
+
+/* Editorial */
+.ed { padding-top: 96px; }
+.ed-in { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 8px; align-items: start; }
+.ed-copy { padding-top: 24px; min-width: 0; }
+.ed h3 { margin: 0 0 22px; font-family: var(--font-sans); font-size: 44px; line-height: 1.05; letter-spacing: -.035em; text-wrap: balance; }
+.ed-heavy h3 { font-weight: 700; font-family: var(--font-display); letter-spacing: -.03em; }
+.ed-light h3 { font-weight: 400; }
+.ed p { margin: 0 0 28px; font-size: 14px; line-height: 23px; color: var(--ink); max-width: 46ch; }
+.btn { display: inline-block; background: var(--action); color: var(--on-action); text-decoration: none; font-size: 14px; font-weight: 600; line-height: 16px; padding: 15px 25px; border-radius: 2px; transition: background-color 150ms ease-out; }
+.btn:hover { background: var(--action-hover); }
+.stage { position: relative; display: grid; grid-template-columns: 1fr 1.5fr 1fr; align-items: center; gap: 0; }
+.stage-card { background: #fff; border-radius: 6px; box-shadow: var(--shadow-float); overflow: hidden; aspect-ratio: 1; position: relative; }
+.stage-card img { width: 100%; height: 100%; object-fit: cover; transition: opacity 250ms ease-out; }
+.stage-card.side { z-index: 1; }
+.stage-card.main { z-index: 2; margin: 0 -2%; }
+.stage-card.side:first-child { margin-right: 1%; }
+.stage-card.side:last-child { margin-left: 1%; }
+.stage-nav { display: flex; justify-content: center; gap: 16px; margin-top: 52px; grid-column: 2; }
+.round { width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--action); color: var(--on-action); display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+.round:hover { background: var(--action-hover); }
+.round svg { width: 20px; height: 20px; }
+.ed-right { min-width: 0; }
+.ed-right .stage-nav-wrap { display: grid; grid-template-columns: 1fr 1.5fr 1fr; }
+
+/* Footer */
+.foot { margin-top: 112px; border-top: 1px solid var(--line); }
+.foot-in { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 32px; padding-block: 48px; }
+.foot h4 { margin: 0 0 12px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13px; color: var(--ink-2); }
+.foot a { text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+.foot .mark { text-align: left; margin-bottom: 14px; display: inline-block; }
+.foot p { margin: 0; font-size: 13px; line-height: 20px; color: var(--ink-muted); max-width: 32ch; }
+.foot-note { border-top: 1px solid var(--line); padding-block: 16px; font-size: 11px; color: var(--ink-muted); }
+
+@media (max-width: 1100px) {
+  .row-5 { grid-auto-columns: calc((100% - 2 * 24px) / 3.2); }
+  .row-laces { grid-auto-columns: calc((100% - 3 * 24px) / 3.4); }
+}
+@media (max-width: 899px) {
+  .nav, .cur { display: none; }
+  .menu { display: inline-grid; justify-self: start; }
+  .hdr-in { min-height: 56px; }
+  .hero { height: clamp(260px, 72vw, 420px); background-position: 30% center; }
+  .hero-shoes { width: 92vw; transform: translate(-50%, -56%); }
+  .hero-pay { display: none; }
+  .row { gap: 12px; }
+  .row-5, .row-4 { grid-auto-columns: 46%; }
+  .row-laces { grid-auto-columns: 38%; }
+  .shead-row { gap: 12px; }
+  .ed { padding-top: 72px; }
+  .ed-in { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .ed-copy { padding-top: 0; }
+  .ed h3 { font-size: 34px; }
+  .stage-nav { margin-top: 32px; }
+  .foot-in { grid-template-columns: 1fr 1fr; }
+  .foot-in > :first-child { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+
+</head>
+<body>
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <button class="ib menu" type="button" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav class="nav" aria-label="Main">
+      <a href="#">Shop all brands</a>
+      <a href="#" aria-current="page">Sneakers</a>
+      <a href="#">Apparel</a>
+      <a href="#">Sell with us</a>
+    </nav>
+    <a class="mark" href="#" aria-label="SoleSupply home">Sole<br>Supply</a>
+    <div class="utils">
+      <button class="cur" type="button"><i aria-hidden="true"></i>USD / EN <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button>
+      <button class="ib" type="button" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></button>
+      <button class="ib" type="button" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg></button>
+      <button class="ib" type="button" aria-label="Bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <a class="hero" href="#" style="background-image:url(/images/hero-art.webp)" aria-label="Shop the Friday drop">
+    <div class="hero-shoes" aria-hidden="true">
+      <img class="s1" src="/images/hero-shoe-left.webp" alt="">
+      <img class="s2" src="/images/hero-shoe-right.webp" alt="">
+    </div>
+    <span class="hero-cta">Shop now</span>
+    <span class="hero-pay" aria-hidden="true">Pay in 4 · Afterpay</span>
+  </a>
+
+  <section class="brands" aria-label="Brands we stock">
+    <ul class="wrap">
+      <li>Supreme</li><li>Bape</li><li>New Era</li><li>Nike</li><li>Hoka</li><li>Stance</li><li>Jordan</li><li>New Balance</li><li>Stüssy</li>
+    </ul>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="h-sneakers">
+    <div class="shead">
+      <div class="shead-row">
+        <button class="ib" type="button" data-scroll="sneakers" data-dir="-1" aria-label="Previous" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 6l-6 6 6 6"/></svg></button>
+        <h2 id="h-sneakers">Latest sneakers</h2>
+        <button class="ib" type="button" data-scroll="sneakers" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 6l6 6-6 6"/></svg></button>
+      </div>
+      <div><a class="viewall" href="#">View all</a></div>
+    </div>
+    <div class="row row-5" id="sneakers"><a class="card" href="#"><div class="card-media"><img src="/images/sneaker-1.webp" alt="Jordan 1 Mid Black Chile Red" loading="lazy"><div class="badges"><span class="bdg bdg-new">New arrival</span></div></div><p class="card-name">Jordan 1 Mid Black Chile Red</p><div class="price"><small>From</small>$160.00</div></a><a class="card" href="#"><div class="card-media"><img src="/images/sneaker-2.webp" alt="Jordan 1 Low Crimson Tint" loading="lazy"><div class="badges"><span class="bdg bdg-new">New arrival</span><span class="bdg bdg-stock">1 in stock</span></div></div><p class="card-name">Jordan 1 Low Crimson Tint</p><div class="price">$220.00</div></a><a class="card" href="#"><div class="card-media"><img src="/images/sneaker-3.webp" alt="Jordan 5 Retro Green Bean 2022" loading="lazy"><div class="badges"><span class="bdg bdg-new">New arrival</span><span class="bdg bdg-stock">1 in stock</span></div></div><p class="card-name">Jordan 5 Retro Green Bean 2022</p><div class="price">$375.00</div></a><a class="card" href="#"><div class="card-media"><img src="/images/sneaker-4.webp" alt="Jordan 1 Retro High OG Yellow Ochre" loading="lazy"><div class="badges"><span class="bdg bdg-new">New arrival</span><span class="bdg bdg-stock">1 in stock</span></div></div><p class="card-name">Jordan 1 Retro High OG Yellow Ochre</p><div class="price">$550.00</div></a><a class="card" href="#"><div class="card-media"><img src="/images/sneaker-5.webp" alt="Jordan 1 Mid SE Dark Chocolate" loading="lazy"><div class="badges"><span class="bdg bdg-sale">Sale</span><span class="bdg bdg-stock">1 in stock</span></div></div><p class="card-name">Jordan 1 Mid SE Dark Chocolate</p><div class="price"><span class="now">$205.00</span><span class="sr">Was </span><s>$240.00</s></div></a></div>
+  </section>
+
+  <section class="ed ed-heavy wrap" aria-labelledby="h-denim">
+    <div class="ed-in">
+      <div class="ed-copy">
+        <h3 id="h-denim">The Denim Edit</h3>
+        <p>Raw and washed denim, trucker jackets and the tees that go under them. Straight cuts and everyday staples, built to fade your way.</p>
+        <a class="btn" href="#">Shop now</a>
+      </div>
+      <div class="ed-right" data-stage>
+        <div class="stage">
+          <div class="stage-card side"><img src="/images/denim-1.webp" alt="Light-wash denim trucker jacket"></div>
+          <div class="stage-card main"><img src="/images/denim-2.webp" alt="Model in white tee and loose light-wash jeans"></div>
+          <div class="stage-card side"><img src="/images/denim-3.webp" alt="Model in olive work jacket and cap"></div>
+        </div>
+        <div class="stage-nav-wrap"><div class="stage-nav">
+          <button class="round" type="button" data-step="-1" aria-label="Previous look"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 6l-6 6 6 6"/></svg></button>
+          <button class="round" type="button" data-step="1" aria-label="Next look"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.5 6l6 6-6 6"/></svg></button>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ed ed-light wrap" aria-labelledby="h-night">
+    <div class="ed-in">
+      <div class="ed-copy">
+        <h3 id="h-night">Night Shift Capsule</h3>
+        <p>A small run of premium streetwear essentials, in store and online now. Elevated design you can wear every day. Get yours before your size is gone.</p>
+        <a class="btn" href="#">Shop now</a>
+      </div>
+      <div class="ed-right" data-stage>
+        <div class="stage">
+          <div class="stage-card side"><img src="/images/capsule-1.webp" alt="Model in black crochet bucket hat"></div>
+          <div class="stage-card main"><img src="/images/capsule-2.webp" alt="Back of a pinstripe hooded jacket"></div>
+          <div class="stage-card side"><img src="/images/capsule-3.webp" alt="Pink long-sleeve top"></div>
+        </div>
+        <div class="stage-nav-wrap"><div class="stage-nav">
+          <button class="round" type="button" data-step="-1" aria-label="Previous look"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 6l-6 6 6 6"/></svg></button>
+          <button class="round" type="button" data-step="1" aria-label="Next look"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.5 6l6 6-6 6"/></svg></button>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="h-laces" style="padding-top:112px">
+    <div class="lhead"><h2 id="h-laces">Laces</h2><a href="#">View all</a></div>
+    <div class="row row-laces"><a class="pcard" href="#"><div class="pcard-media"><img src="/images/laces-1.webp" alt="Standard Flat Laces Black 160cm" loading="lazy"></div><p class="pcard-name">Standard Flat Laces Black 160cm</p><div class="price">$10.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/laces-2.webp" alt="Standard Flat Laces Cool Grey 110cm" loading="lazy"></div><p class="pcard-name">Standard Flat Laces Cool Grey 110cm</p><div class="price">$10.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/laces-3.webp" alt="Standard Flat Laces Off White Beige 110cm" loading="lazy"></div><p class="pcard-name">Standard Flat Laces Off White Beige 110cm</p><div class="price">$10.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/laces-4.webp" alt="Standard Flat Laces Tiffany Green 110cm" loading="lazy"></div><p class="pcard-name">Standard Flat Laces Tiffany Green 110cm</p><div class="price">$10.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/laces-5.webp" alt="Oval Laces Fuchsia Pink 110cm" loading="lazy"></div><p class="pcard-name">Oval Laces Fuchsia Pink 110cm</p><div class="price">$10.00</div></a></div>
+  </section>
+
+  <section class="sec wrap" aria-labelledby="h-apparel" style="padding-top:88px">
+    <div class="lhead"><h2 id="h-apparel">Apparel</h2><a href="#">View all</a></div>
+    <div class="row row-4"><a class="pcard" href="#"><div class="pcard-media"><img src="/images/apparel-1.webp" alt="Printed Steep Tech Jacket Black" loading="lazy"></div><p class="pcard-name">Printed Steep Tech Jacket Black</p><div class="price">$689.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/apparel-2.webp" alt="Shark Full Zip Hoodie Pink Camo" loading="lazy"></div><p class="pcard-name">Shark Full Zip Hoodie Pink Camo</p><div class="price">$540.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/apparel-3.webp" alt="Basic Zip Hoodie Black" loading="lazy"></div><p class="pcard-name">Basic Zip Hoodie Black</p><div class="price">$189.00</div></a><a class="pcard" href="#"><div class="pcard-media"><img src="/images/apparel-4.webp" alt="Racing Leather Jacket Brown" loading="lazy"></div><p class="pcard-name">Racing Leather Jacket Brown</p><div class="price">$260.00</div></a></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><a class="mark" href="#">Sole<br>Supply</a><p>Streetwear and sneakers, checked by hand and shipped in 48 hours.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#">Sneakers</a></li><li><a href="#">Apparel</a></li><li><a href="#">Laces</a></li><li><a href="#">All brands</a></li></ul></div>
+    <div><h4>Help</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Authenticity</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><h4>Sell</h4><ul><li><a href="#">Sell with us</a></li><li><a href="#">Consignment</a></li></ul></div>
+  </div>
+  <div class="wrap foot-note">Preview build. Product and editorial photos are stand-ins cropped from your reference screenshots; replace them with SoleSupply's own before launch.</div>
+</footer>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-scroll]').forEach(function (btn) {
+    var row = document.getElementById(btn.dataset.scroll);
+    btn.addEventListener('click', function () { row.scrollBy({ left: Number(btn.dataset.dir) * row.clientWidth, behavior: 'smooth' }); });
+    row.addEventListener('scroll', function () {
+      document.querySelectorAll('[data-scroll="' + row.id + '"]').forEach(function (b) {
+        var d = Number(b.dataset.dir);
+        b.disabled = d < 0 ? row.scrollLeft < 4 : row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+      });
+    }, { passive: true });
+  });
+  document.querySelectorAll('[data-stage]').forEach(function (stage) {
+    var imgs = Array.prototype.slice.call(stage.querySelectorAll('.stage-card img'));
+    stage.querySelectorAll('[data-step]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var data = imgs.map(function (i) { return [i.src, i.alt]; });
+        var step = Number(btn.dataset.step);
+        imgs.forEach(function (img, k) {
+          var d = data[(k + step + data.length) % data.length];
+          img.style.opacity = 0;
+          setTimeout(function () { img.src = d[0]; img.alt = d[1]; img.style.opacity = 1; }, 150);
+        });
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

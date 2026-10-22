@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config: Config = {
   content: [
@@ -9,11 +10,45 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        surface: "var(--surface)",
+        "surface-tile": "var(--surface-tile)",
+        ink: "var(--ink)",
+        "ink-2": "var(--ink-2)",
+        "ink-muted": "var(--ink-muted)",
+        line: "var(--line)",
+        action: "var(--action)",
+        "action-hover": "var(--action-hover)",
+        "on-action": "var(--on-action)",
+        "drop-ground": "var(--drop-ground)",
+        "on-drop-ground": "var(--on-drop-ground)",
+        sale: "var(--sale)",
+        focus: "var(--focus)",
+      },
+      fontFamily: {
+        display: ["var(--font-display)"],
+        sans: ["var(--font-sans)"],
+      },
+      boxShadow: {
+        float: "var(--shadow-float)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".px-gutter": {
+          paddingLeft: "var(--gutter)",
+          paddingRight: "var(--gutter-r)",
+        },
+        ".pl-gutter": {
+          paddingLeft: "var(--gutter)",
+        },
+        ".pr-gutter": {
+          paddingRight: "var(--gutter-r)",
+        },
+      });
+    }),
+  ],
 };
+
 export default config;

@@ -2,26 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Layout: white gallery storefront — sticky white header, one full-bleed blob-art drop hero, quiet product rows, floating-card editorials. Light-only by design: product photography is shot on white. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-tile: #f4f4f4;
+  --ink: #0a0a0a;
+  --ink-2: #333333;
+  --ink-muted: #5c5c5c;
+  --line: #e6e6e6;
+  --action: #0a0a0a;
+  --action-hover: #2b2b2b;
+  --on-action: #ffffff;
+  --drop-ground: #0a0a0a;
+  --on-drop-ground: #ffffff;
+  --sale: #c8102e;
+  --focus: #2f5bff;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --shadow-float: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@media (min-width: 900px) { :root { --gutter: max(56px, env(safe-area-inset-left, 0px)); --gutter-r: max(56px, env(safe-area-inset-right, 0px)); } }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
