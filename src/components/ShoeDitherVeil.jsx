@@ -1046,6 +1046,15 @@ export default function ShoeDitherVeil({
       frameIndex = 0
       uploadFrame(0)
       wake()
+      if (!reducedMotion) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (cancelled) return
+            canvas.classList.add('is-shown')
+            maskCanvasRef?.current?.classList.add('is-shown')
+          })
+        })
+      }
     }
     boot().catch((error) => {
       if (error?.name === 'AbortError') return

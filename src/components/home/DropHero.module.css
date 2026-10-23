@@ -39,6 +39,19 @@
   pointer-events: none;
   display: block;
   background: transparent;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.veil :global(.shoe-mask-canvas.is-shown) {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veil :global(.shoe-mask-canvas) {
+    transition: none;
+    opacity: 1;
+  }
 }
 
 .logo {
