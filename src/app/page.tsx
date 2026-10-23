@@ -12,15 +12,15 @@ import { apparel, laces, sneakers } from "@/lib/products";
 import styles from "@/components/product/product.module.css";
 
 const BRANDS = [
-  { name: "Supreme", src: "/logos/supreme.svg", height: 28 },
-  { name: "Bape", src: "/logos/bape.webp", height: 44, color: true },
-  { name: "New Era", src: "/logos/new-era.jpg", height: 36, color: true },
-  { name: "Nike", src: "/logos/nike.svg", height: 20 },
-  { name: "Hoka", src: "/logos/hoka.svg", height: 22 },
-  { name: "Stance", src: "/logos/stance.webp", height: 26 },
-  { name: "Jordan", src: "/logos/jordan.svg", height: 40 },
-  { name: "New Balance", src: "/logos/new-balance.svg", height: 28 },
-  { name: "Stüssy", src: "/logos/stussy.svg", height: 48 },
+  { name: "Supreme", src: "/logos/supreme.svg", height: 42 },
+  { name: "Bape", src: "/logos/bape.webp", height: 66, color: true },
+  { name: "New Era", src: "/logos/new-era.jpg", height: 54, color: true },
+  { name: "Nike", src: "/logos/nike.svg", height: 30 },
+  { name: "Hoka", src: "/logos/hoka.svg", height: 33 },
+  { name: "Stance", src: "/logos/stance.webp", height: 39 },
+  { name: "Jordan", src: "/logos/jordan.svg", height: 60 },
+  { name: "New Balance", src: "/logos/new-balance.svg", height: 42 },
+  { name: "Stüssy", src: "/logos/stussy.svg", height: 72 },
 ];
 
 export default function Home() {
@@ -35,7 +35,7 @@ export default function Home() {
             <CenteredHeader
               id="h-sneakers"
               title="Latest sneakers"
-              viewAllHref="#"
+              viewAllHref="/sneakers/"
               previousDisabled={scroll.atStart}
               nextDisabled={scroll.atEnd}
               onPrevious={() => scroll.by(-1)}
@@ -44,7 +44,7 @@ export default function Home() {
           )}
         >
           {sneakers.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} href={`/sneakers/${product.id}/`} />
           ))}
         </ProductRow>
       </section>
@@ -79,7 +79,7 @@ export default function Home() {
         </ProductRow>
       </section>
       <section className={`${styles.sec} ${styles.wrap}`} aria-labelledby="h-apparel" style={{ paddingTop: 88 }}>
-        <LeftHeader id="h-apparel" title="Apparel" viewAllHref="#" />
+        <LeftHeader id="h-apparel" title="Apparel" viewAllHref="/apparel/" />
         <ProductRow variant="4">
           {apparel.map((product) => (
             <PlainCard key={product.id} product={product} />

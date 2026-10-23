@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { SoleMark } from "@/components/SoleMark";
 import styles from "./SiteFooter.module.css";
 
 const COLUMNS = [
   {
     title: "Shop",
-    links: ["Sneakers", "Apparel", "Laces", "All brands"],
+    links: ["Sneakers", "Apparel", "Laces"],
   },
   {
     title: "Help",
@@ -12,9 +13,20 @@ const COLUMNS = [
   },
   {
     title: "Sell",
-    links: ["Sell with us", "Consignment"],
+    links: ["Sell with us"],
   },
 ] as const;
+
+const HREFS: Record<string, string> = {
+  Sneakers: "/sneakers/",
+  Apparel: "/apparel/",
+  Laces: "/shop/",
+  Shipping: "/shipping/",
+  Returns: "/returns/",
+  Authenticity: "/authenticity/",
+  Contact: "/contact/",
+  "Sell with us": "/contact/",
+};
 
 export function SiteFooter() {
   return (
@@ -22,11 +34,11 @@ export function SiteFooter() {
       <div className={styles.footIn}>
         <div>
           <Link className={styles.mark} href="#">
-            Sole
-            <br />
-            Supply
+            <SoleMark align="left" />
           </Link>
-          <p>Streetwear and sneakers, checked by hand and shipped in 48 hours.</p>
+          <p>Streetwear and sneakers, checked by hand.</p>
+          <p>London, UK</p>
+          <p>Shipping only within the United Kingdom.</p>
         </div>
         {COLUMNS.map((column) => (
           <div key={column.title}>
@@ -34,7 +46,9 @@ export function SiteFooter() {
             <ul>
               {column.links.map((label) => (
                 <li key={label}>
-                  <Link href="#">{label}</Link>
+                  <Link href={HREFS[label] ?? "#"}>
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -508,6 +508,7 @@ export default function ShoeDitherVeil({
   ariaLabel = 'Rotating grey sneaker',
   className = '',
   style = undefined,
+  maskCanvasRef,
 }) {
   const containerRef = useRef(null)
   const settingsRef = useRef(null)
@@ -558,6 +559,7 @@ export default function ShoeDitherVeil({
     const gl = renderer.gl
     gl.clearColor(0, 0, 0, 0)
     const canvas = gl.canvas
+    canvas.classList.add('shoe-dither-gl')
     canvas.style.display = 'block'
     canvas.style.width = '100%'
     canvas.style.height = '100%'
@@ -727,13 +729,47 @@ export default function ShoeDitherVeil({
     const abort = new AbortController()
     let cancelled = false
 
+    const paintShoeMask = (bitmap) => {
+      const mask = maskCanvasRef?.current
+      if (!mask) return
+      const w = canvas.width
+      const h = canvas.height
+      if (mask.width !== w || mask.height !== h) {
+        mask.width = w
+        mask.height = h
+      }
+      const ctx = mask.getContext('2d')
+      if (!ctx) return
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.globalCompositeOperation = 'source-over'
+      ctx.clearRect(0, 0, w, h)
+      if (!bitmap) return
+      const contain = settingsRef.current?.fit === 'contain'
+      const cover = fitScale(w, h, bitmap.width, bitmap.height, contain)
+      const dw = w / cover[0]
+      const dh = h / cover[1]
+      const dx = (w - dw) / 2
+      const dy = (h - dh) / 2
+      ctx.save()
+      ctx.translate(0, h)
+      ctx.scale(1, -1)
+      ctx.drawImage(bitmap, dx, dy, dw, dh)
+      ctx.restore()
+      ctx.globalCompositeOperation = 'source-in'
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, w, h)
+      ctx.globalCompositeOperation = 'source-over'
+    }
+
     const layout = () => {
       const nextW = Math.max(1, container.clientWidth)
       const nextH = Math.max(1, container.clientHeight)
       if (nextW !== width || nextH !== height) historyReset = true
       width = nextW
       height = nextH
+      renderer.dpr = Math.min(window.devicePixelRatio || 1, 2)
       renderer.setSize(width, height)
+      paintShoeMask(image)
       viewUniforms.uResolution.value = [canvas.width, canvas.height]
       maskUniforms.uSize.value = [width, height]
       viewUniforms.uSize.value = [width, height]
@@ -751,13 +787,18 @@ export default function ShoeDitherVeil({
 
     const uploadFrame = (index) => {
       const bitmap = bitmaps[index]
-      if (!bitmap || index === uploadedIndex) return
+      if (!bitmap) {
+        paintShoeMask(null)
+        return
+      }
+      if (index === uploadedIndex) return
       imageTexture.image = bitmap
       imageTexture.needsUpdate = true
       image = bitmap
       imageWidth = bitmap.width
       imageHeight = bitmap.height
       uploadedIndex = index
+      paintShoeMask(bitmap)
     }
 
     const frame = (now) => {
@@ -958,6 +999,18 @@ export default function ShoeDitherVeil({
       wake()
     })
     resizeObserver.observe(container)
+    let dprMedia = null
+    const onDprChange = () => {
+      layout()
+      wake()
+      bindDpr()
+    }
+    const bindDpr = () => {
+      dprMedia?.removeEventListener('change', onDprChange)
+      dprMedia = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+      dprMedia.addEventListener('change', onDprChange)
+    }
+    bindDpr()
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
       if (visible && !document.hidden) wake()
@@ -1005,6 +1058,7 @@ export default function ShoeDitherVeil({
       cancelAnimationFrame(raf)
       wakeRef.current = () => {}
       resizeObserver.disconnect()
+      dprMedia?.removeEventListener('change', onDprChange)
       intersectionObserver.disconnect()
       document.removeEventListener('visibilitychange', onVisibility)
       window.removeEventListener('keydown', onKey)

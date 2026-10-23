@@ -1,0 +1,125 @@
+.page {
+  max-width: 720px;
+  padding: 32px var(--gutter-r) 96px var(--gutter);
+}
+
+.page h1 {
+  margin: 0 0 28px;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.empty {
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.empty a {
+  color: var(--ink);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.list img {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  background: var(--surface-tile);
+}
+
+.name {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.list p {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.list .name,
+.list .price {
+  margin: 0;
+}
+
+.price {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+
+.notice {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(10, 10, 10, 0.4);
+  cursor: pointer;
+}
+
+.noticeCard {
+  position: relative;
+  z-index: 1;
+  width: min(440px, 100%);
+  padding: 28px 24px 24px;
+  background: #fff;
+  box-shadow: var(--shadow-float);
+  text-align: center;
+}
+
+.noticeFlag {
+  width: 48px;
+  height: 24px;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.noticeCard p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.noticeCard button {
+  height: 44px;
+  margin-top: 20px;
+  padding: 0 28px;
+  border: 0;
+  background: #0a0a0a;
+  color: #fff;
+  font: 500 14px/1 var(--font-sans);
+  cursor: pointer;
+}

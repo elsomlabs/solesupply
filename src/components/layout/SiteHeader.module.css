@@ -18,6 +18,20 @@
   padding-block: 8px;
 }
 
+.lead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
 .nav {
   display: flex;
   gap: 16px;
@@ -41,13 +55,6 @@
 }
 
 .mark {
-  font-family: var(--font-display);
-  font-stretch: 125%;
-  font-weight: 900;
-  font-size: 15px;
-  line-height: 0.92;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
   text-align: center;
   text-decoration: none;
   color: var(--ink);
@@ -58,6 +65,7 @@
   justify-content: flex-end;
   align-items: center;
   gap: 4px;
+  margin-left: auto;
 }
 
 .cur {
@@ -72,12 +80,10 @@
   cursor: pointer;
 }
 
-.cur i {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(#1b3a8a 0 50%, #b22234 50% 100%);
-  display: inline-block;
+.flag {
+  width: 16px;
+  height: 10px;
+  display: block;
 }
 
 .ib {
@@ -102,11 +108,30 @@
   height: 20px;
 }
 
+.bag {
+  position: relative;
+}
+
+.bagCount {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 99px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
 .menu {
   display: none;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 1023px) {
   .nav,
   .cur {
     display: none;
@@ -169,8 +194,129 @@
   gap: 16px;
 }
 
-@media (min-width: 900px) {
-  .drawer {
+.bagPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, calc(100% - 48px));
+  padding: max(20px, env(safe-area-inset-top, 0px)) 24px max(24px, env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  box-shadow: var(--shadow-float);
+  transform: translateX(100%);
+  transition: transform 200ms ease-out;
+}
+
+.drawerOpen .bagPanel {
+  transform: translateX(0);
+}
+
+.bagHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.bagHead h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.bagEmpty {
+  margin: 48px 0 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+}
+
+.bagList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: auto;
+}
+
+.bagList li {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.bagList img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  background: var(--surface-tile);
+}
+
+.bagList a {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.bagList a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bagList p {
+  margin: 4px 0 0;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.bagList button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--ink-muted);
+  font: 400 12px/1 var(--font-sans);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.bagFoot {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.bagTotal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.checkout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  margin-top: 16px;
+  background: #0a0a0a;
+  color: #fff;
+  font: 500 15px/1 var(--font-sans);
+  text-decoration: none;
+}
+
+.checkout:hover {
+  background: var(--action-hover);
+}
+
+@media (min-width: 1024px) {
+  .drawer:not(.bagDrawer) {
     display: none;
   }
 }

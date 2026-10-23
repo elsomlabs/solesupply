@@ -4,23 +4,21 @@
   background: var(--surface);
 }
 
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 64s linear infinite;
+}
+
 .list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  gap: 64px;
   margin: 0;
   padding-top: 22px;
   padding-bottom: 22px;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter-r);
-  overflow-x: auto;
+  padding-right: 64px;
   list-style: none;
-  scrollbar-width: none;
-}
-
-.list::-webkit-scrollbar {
-  display: none;
 }
 
 .list li {
@@ -37,4 +35,38 @@
 
 .color {
   filter: grayscale(1) contrast(2.4);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    width: 100%;
+    animation: none;
+  }
+
+  .list[aria-hidden="true"],
+  .list li[aria-hidden="true"] {
+    display: none;
+  }
+
+  .list {
+    justify-content: space-between;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter-r);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .list::-webkit-scrollbar {
+    display: none;
+  }
 }

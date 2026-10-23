@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Instrument_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { CartProvider } from "@/lib/cart";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -24,7 +25,7 @@ const instrumentSans = Instrument_Sans({
 export const metadata: Metadata = {
   title: "SoleSupply Storefront",
   description:
-    "Streetwear and sneakers, checked by hand and shipped in 48 hours.",
+    "Streetwear and sneakers, checked by hand in London. Shipping only within the United Kingdom.",
 };
 
 export default function RootLayout({
@@ -36,9 +37,11 @@ export default function RootLayout({
     <html lang="en">
       {/* On body, these variables win over the :root font stacks. */}
       <body className={`${archivo.variable} ${instrumentSans.variable}`}>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
+        <CartProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </CartProvider>
       </body>
     </html>
   );

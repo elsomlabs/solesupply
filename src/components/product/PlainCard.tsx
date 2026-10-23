@@ -2,9 +2,9 @@ import Link from "next/link";
 import { formatPrice, type Product } from "@/lib/products";
 import styles from "./product.module.css";
 
-export function PlainCard({ product, href = "#" }: { product: Product; href?: string }) {
-  return (
-    <Link href={href} className={styles.pcard}>
+export function PlainCard({ product, href }: { product: Product; href?: string }) {
+  const body = (
+    <>
       <div className={styles.pcardMedia}>
         <img src={product.image} alt={product.name} loading="lazy" />
       </div>
@@ -21,6 +21,13 @@ export function PlainCard({ product, href = "#" }: { product: Product; href?: st
           formatPrice(product.price)
         )}
       </div>
+    </>
+  );
+
+  if (!href) return <article className={styles.pcard}>{body}</article>;
+  return (
+    <Link href={href} className={styles.pcard}>
+      {body}
     </Link>
   );
 }

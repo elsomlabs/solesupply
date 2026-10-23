@@ -1,0 +1,32 @@
+.mark {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.nav {
+  font-size: 15px;
+}
+
+.hero {
+  font-size: 60px;
+}
+
+.ink {
+  color: var(--ink);
+}
+
+.onDrop {
+  color: var(--on-drop-ground);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
