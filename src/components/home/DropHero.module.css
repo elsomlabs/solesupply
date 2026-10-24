@@ -74,7 +74,6 @@
 
 .payLabel {
   flex: none;
-  height: 64px;
   font: 600 11px/1 var(--font-sans);
   letter-spacing: 0.04em;
   writing-mode: vertical-rl;

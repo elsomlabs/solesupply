@@ -9,12 +9,13 @@ import { useCart } from "@/lib/cart";
 import { formatPrice } from "@/lib/products";
 import styles from "./SiteHeader.module.css";
 
-const SHOP_LINKS = [
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "Sneakers", href: "/sneakers/" },
   { label: "Apparel", href: "/apparel/" },
+  { label: "Laces", href: "/shop/?category=shoe-laces" },
+  { label: "Sell with us", href: "/contact/" },
 ] as const;
-
-const NAV_LINKS = [{ label: "Sell with us", href: "/contact/" }] as const;
 
 function isCurrent(pathname: string, href: string) {
   if (!href.startsWith("/")) return false;
@@ -24,107 +25,27 @@ function isCurrent(pathname: string, href: string) {
   return path === target || path.startsWith(`${target}/`);
 }
 
-function ShopMenu({ onNavigate }: { onNavigate?: () => void }) {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const menuId = useId();
-
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
-    };
-    const onFocusIn = (event: FocusEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      setOpen(false);
-      if (rootRef.current?.contains(document.activeElement)) buttonRef.current?.focus();
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("focusin", onFocusIn);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("focusin", onFocusIn);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [open]);
-
-  function openFromHover() {
-    if (window.matchMedia("(min-width: 1024px)").matches) setOpen(true);
-  }
-
-  function closeFromHover() {
-    if (!window.matchMedia("(min-width: 1024px)").matches) return;
-    if (rootRef.current?.contains(document.activeElement)) return;
-    setOpen(false);
-  }
-
-  return (
-    <div
-      ref={rootRef}
-      className={styles.shop}
-      onMouseEnter={openFromHover}
-      onMouseLeave={closeFromHover}
-    >
-      <Link href="/shop/" aria-current={isCurrent(pathname, "/shop/") ? "page" : undefined} onClick={onNavigate}>
-        Shop
-      </Link>
-      <button
-        ref={buttonRef}
-        type="button"
-        className={styles.shopTrigger}
-        aria-expanded={open}
-        aria-haspopup="true"
-        aria-controls={menuId}
-        aria-label="Shop menu"
-        onClick={() => setOpen((value) => !value)}
-      >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-          <path d="M5 9l7 7 7-7" />
-        </svg>
-      </button>
-      <div id={menuId} className={open ? `${styles.shopMenu} ${styles.shopMenuOpen}` : styles.shopMenu} hidden={!open}>
-        <div className={styles.shopPanel}>
-          {SHOP_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-              onClick={() => {
-                setOpen(false);
-                onNavigate?.();
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
+function NavLinks() {
   const pathname = usePathname();
   return (
-    <>
-      <ShopMenu onNavigate={onNavigate} />
+    <ul>
       {NAV_LINKS.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-          onClick={onNavigate}
-        >
-          {item.label}
-        </Link>
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+            onFocus={(event) => {
+              const link = event.currentTarget;
+              requestAnimationFrame(() => {
+                link.scrollIntoView({ block: "nearest", inline: "nearest" });
+              });
+            }}
+          >
+            {item.label}
+          </Link>
+        </li>
       ))}
-    </>
+    </ul>
   );
 }
 
@@ -139,8 +60,6 @@ function Glyph({ children, strokeWidth = 1.5 }: { children: ReactNode; strokeWid
 export function SiteHeader() {
   const { count, lines, remove, reveal } = useCart();
   const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const [entered, setEntered] = useState(false);
   const [bagOpen, setBagOpen] = useState(false);
   const [bagEntered, setBagEntered] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -149,22 +68,13 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const awayRef = useRef(false);
   const scrolledRef = useRef(false);
-  const lockRef = useRef({ menu: false, search: false });
-  lockRef.current.menu = open;
-  lockRef.current.search = searchOpen;
-  const menuRef = useRef<HTMLButtonElement>(null);
+  const searchLockRef = useRef(false);
+  searchLockRef.current = searchOpen;
   const bagRef = useRef<HTMLButtonElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const drawerRef = useRef<HTMLDivElement>(null);
   const bagDrawerRef = useRef<HTMLDivElement>(null);
-  const drawerId = useId();
   const bagId = useId();
   const total = lines.reduce((sum, line) => sum + line.price, 0);
-
-  function close() {
-    setEntered(false);
-    setOpen(false);
-  }
 
   function closeBag() {
     setBagEntered(false);
@@ -172,7 +82,6 @@ export function SiteHeader() {
   }
 
   function openSearch() {
-    close();
     closeBag();
     setSearchEntered(false);
     setSearchOpen(true);
@@ -191,10 +100,10 @@ export function SiteHeader() {
   }
 
   useEffect(() => {
-    if (!open && !searchOpen) return;
+    if (!searchOpen) return;
     awayRef.current = false;
     setAway(false);
-  }, [open, searchOpen]);
+  }, [searchOpen]);
 
   useEffect(() => {
     let frame = 0;
@@ -210,8 +119,7 @@ export function SiteHeader() {
       if (delta > 0) down += delta;
       else if (delta < 0) down = 0;
 
-      const shopOpen = document.querySelector('[aria-label="Shop menu"][aria-expanded="true"]') !== null;
-      const locked = lockRef.current.menu || lockRef.current.search || shopOpen;
+      const locked = searchLockRef.current;
       let nextAway = awayRef.current;
       if (locked) {
         nextAway = false;
@@ -268,20 +176,8 @@ export function SiteHeader() {
     };
   }, [searchOpen]);
 
-  function toggle() {
-    if (open) {
-      close();
-      return;
-    }
-    closeBag();
-    setEntered(false);
-    setOpen(true);
-  }
-
   useEffect(() => {
     if (reveal === 0) return;
-    setEntered(false);
-    setOpen(false);
     setBagEntered(false);
     setBagOpen(true);
   }, [reveal]);
@@ -291,82 +187,9 @@ export function SiteHeader() {
       closeBag();
       return;
     }
-    close();
     setBagEntered(false);
     setBagOpen(true);
   }
-
-  useEffect(() => {
-    const media = window.matchMedia("(min-width: 1024px)");
-    const onChange = () => {
-      if (media.matches) {
-        setEntered(false);
-        setOpen(false);
-      }
-    };
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    const drawer = drawerRef.current;
-    if (!drawer) return;
-
-    const inerted: HTMLElement[] = [];
-    for (const child of Array.from(document.body.children)) {
-      if (child !== drawer && child instanceof HTMLElement && !child.hasAttribute("inert")) {
-        child.setAttribute("inert", "");
-        inerted.push(child);
-      }
-    }
-
-    const focusable = () =>
-      Array.from(drawer.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")).filter(
-        (element) => element.tabIndex >= 0,
-      );
-
-    const frame = requestAnimationFrame(() => {
-      setEntered(true);
-      focusable()[0]?.focus();
-    });
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        setEntered(false);
-        setOpen(false);
-        return;
-      }
-      if (event.key !== "Tab") return;
-      const items = focusable();
-      event.preventDefault();
-      if (items.length === 0) return;
-      const current = items.indexOf(document.activeElement as HTMLElement);
-      const next = event.shiftKey
-        ? current <= 0
-          ? items.length - 1
-          : current - 1
-        : current === items.length - 1
-          ? 0
-          : current + 1;
-      items[next]?.focus();
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      cancelAnimationFrame(frame);
-      document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
-      inerted.forEach((element) => element.removeAttribute("inert"));
-      if (menuRef.current && getComputedStyle(menuRef.current).display !== "none") {
-        menuRef.current.focus();
-      }
-    };
-  }, [open]);
 
   useEffect(() => {
     if (!bagOpen) return;
@@ -427,45 +250,12 @@ export function SiteHeader() {
     };
   }, [bagOpen]);
 
-  const drawer = (
-    <div
-      ref={drawerRef}
-      id={drawerId}
-      className={entered ? `${styles.drawer} ${styles.drawerOpen}` : styles.drawer}
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menu"
-    >
-      <button type="button" className={styles.scrim} aria-label="Close menu" tabIndex={-1} onClick={close} />
-      <div className={styles.panel}>
-        <nav className={styles.drawerNav} aria-label="Main">
-          <NavLinks onNavigate={close} />
-        </nav>
-      </div>
-    </div>
-  );
-
   return (
     <header className={[styles.hdr, away ? styles.away : "", scrolled ? styles.scrolled : ""].filter(Boolean).join(" ")}>
       <div className={`${styles.wrap} ${styles.hdrIn}`}>
-        <div className={styles.lead}>
-          <button
-            ref={menuRef}
-            className={`${styles.ib} ${styles.menu}`}
-            type="button"
-            aria-label="Menu"
-            aria-expanded={open}
-            aria-controls={drawerId}
-            onClick={toggle}
-          >
-            <Glyph>
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </Glyph>
-          </button>
-          <nav className={styles.nav} aria-label="Main">
-            <NavLinks />
-          </nav>
-        </div>
+        <nav className={styles.nav} aria-label="Main">
+          <NavLinks />
+        </nav>
         <Link className={styles.mark} href="/" aria-label="SoleSupply home">
           Sole Supply
         </Link>
@@ -515,7 +305,6 @@ export function SiteHeader() {
           </button>
         </form>
       ) : null}
-      {open ? createPortal(drawer, document.body) : null}
       {bagOpen ? createPortal(
         <div
           ref={bagDrawerRef}

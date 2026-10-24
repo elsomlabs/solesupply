@@ -1,0 +1,33 @@
+.section {
+  padding: 64px var(--gutter-r) 0 var(--gutter);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.head h2 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.shopAll {
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.shopAll:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

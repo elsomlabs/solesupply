@@ -47,7 +47,7 @@ export function DropHero({ href, ctaLabel }: DropHeroProps) {
       <HeroFrame />
       <div className={styles.stage}>
         <span className={styles.pay}>
-          <span className={styles.payLabel}>Scroll</span>
+          <span className={styles.payLabel}>London, UK</span>
           <span className={styles.payLine} />
         </span>
       </div>

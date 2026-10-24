@@ -1,0 +1,462 @@
+{
+  "source": "StockX product detail pages (facts only; descriptions are original wording), pulled 2026-10-24",
+  "note": "Keyed by catalog id. Fields omitted where StockX had no data. releaseDate is ISO. retailPriceUsd is original retail in USD.",
+  "items": {
+    "hoodie-01": {
+      "colour": "Green",
+      "description": "Green zip-up hoodie from Vale Forever in the Inferno colourway."
+    },
+    "hoodie-02": {
+      "season": "FW21",
+      "colour": "Blue",
+      "releaseDate": "2021-09-29",
+      "retailPriceUsd": 90,
+      "description": "Blue Yeezy x Gap hoodie in 100% cotton with no visible branding, from the first Yeezy Gap hoodie drop."
+    },
+    "hoodie-03": {
+      "season": "SS23",
+      "colour": "Black",
+      "releaseDate": "2023-01-24",
+      "styleCode": "SS25THD065-BLACK/AOTHD1303",
+      "retailPriceUsd": 210,
+      "description": "Black Denim Tears sweatshirt in 100% cotton with a hood and front pocket, ribbed neckline, cuffs and hem, and relaxed sleeves."
+    },
+    "hoodie-04": {
+      "colour": "Black/Black/White",
+      "releaseDate": "2020-01-01",
+      "styleCode": "BV2645-010",
+      "retailPriceUsd": 130,
+      "description": "Soft brushed-fleece Nike full-zip hoodie in black, with a full-length zip, unisex cut and Swoosh logo; the hood lining is 100% cotton."
+    },
+    "hoodie-05": {
+      "colour": "Dark Grey",
+      "releaseDate": "2022-10-13",
+      "styleCode": "471162 02 0003",
+      "retailPriceUsd": 200,
+      "description": "Dark grey padded polar-fleece hoodie from Yeezy Gap."
+    },
+    "hoodie-06": {
+      "season": "SS24",
+      "colour": "Jet Black/Jet Black",
+      "releaseDate": "2024-02-27",
+      "styleCode": "192250500126861 / 192SP242054F",
+      "retailPriceUsd": 100,
+      "description": "Black Fear of God Essentials hoodie in a cotton-polyester blend, with a relaxed fit, chest logo, ribbed hem and cuffs, and a drawstring hood."
+    },
+    "hoodie-07": {
+      "season": "FW25",
+      "colour": "Black",
+      "releaseDate": "2025-12-22",
+      "retailPriceUsd": 175,
+      "description": "Black Kith crewneck referencing the Bada Bing club from The Sopranos."
+    },
+    "hoodie-08": {
+      "season": "SS26",
+      "colour": "Black",
+      "releaseDate": "2026-03-19",
+      "retailPriceUsd": 298,
+      "description": "Black heavyweight cotton-fleece zip hoodie from Supreme x MM6 Maison Margiela, with a split kangaroo pocket, ribbed cuffs and hem, and the Box Logo."
+    },
+    "hoodie-09": {
+      "season": "SS24",
+      "colour": "Light Heather Grey/Garden Yellow",
+      "releaseDate": "2024-02-14",
+      "retailPriceUsd": 100,
+      "description": "Light heather grey Essentials hoodie with a garden yellow accent around the hood, a tapered waistband and rib-knit cuffs."
+    },
+    "hoodie-10": {
+      "season": "SS24",
+      "colour": "Jet Black/Jet Black",
+      "releaseDate": "2024-02-14",
+      "retailPriceUsd": 150,
+      "description": "Jet black Essentials hoodie with a nylon exterior and a soft fleece interior."
+    },
+    "hoodie-11": {
+      "season": "FW24",
+      "colour": "Crimson",
+      "releaseDate": "2024-11-15",
+      "styleCode": "192HO246256F",
+      "retailPriceUsd": 120,
+      "description": "Crimson Essentials fleece hoodie with a clean silhouette and minimal branding."
+    },
+    "hoodie-12": {
+      "colour": "Polo Black",
+      "releaseDate": "2025-01-01",
+      "styleCode": "710888282001/710888283001",
+      "retailPriceUsd": 263,
+      "description": "Two-piece Polo Ralph Lauren set: a black double-knit full-zip hoodie with drawstring hood and matching cuffed jogger pants, with embroidered Polo logos."
+    },
+    "hoodie-13": {
+      "season": "FW24",
+      "colour": "Black",
+      "releaseDate": "2024-08-28",
+      "styleCode": "192BT246250F",
+      "retailPriceUsd": 120,
+      "description": "Black Essentials hoodie in 480GSM core fleece, an 80% cotton and 20% polyester blend."
+    },
+    "hoodie-14": {
+      "season": "SS25",
+      "colour": "Black",
+      "releaseDate": "2025-05-09",
+      "retailPriceUsd": 140,
+      "description": "Black hoodie from the Travis Scott x Nike x FC Barcelona collaboration with a spray-style logo."
+    },
+    "hoodie-15": {
+      "season": "FW26",
+      "colour": "Black",
+      "releaseDate": "2026-10-08",
+      "description": "Black Supreme zip hoodie in dark fleece with embroidered artwork by Masato Kawajo and rhinestone appliqué across the front, hood, sleeves and back."
+    },
+    "hoodie-16": {
+      "season": "FW25",
+      "colour": "Heather Grey",
+      "releaseDate": "2025-12-04",
+      "retailPriceUsd": 168,
+      "description": "The classic Supreme Box Logo hooded sweatshirt in heather grey, in a relaxed fleece build."
+    },
+    "hoodie-17": {
+      "season": "SS24",
+      "colour": "Black",
+      "releaseDate": "2024-01-17",
+      "retailPriceUsd": 200,
+      "description": "Black Sp5der hoodie with the web graphic, a kangaroo pocket and small white stars down one sleeve."
+    },
+    "hoodie-18": {
+      "season": "SS22",
+      "colour": "Black",
+      "releaseDate": "2022-05-27",
+      "styleCode": "4713130020000",
+      "retailPriceUsd": 200,
+      "description": "Black Yeezy Gap hoodie with the Gap logo."
+    },
+    "hoodie-19": {
+      "season": "SS26",
+      "colour": "Sapphire",
+      "retailPriceUsd": 280,
+      "description": "Sapphire zip-up hoodie from Vale Forever's Classico line."
+    },
+    "hoodie-20": {
+      "season": "FW23",
+      "colour": "Pink",
+      "releaseDate": "2023-11-24",
+      "retailPriceUsd": 200,
+      "description": "Pink pullover Sp5der hoodie with a drawstring hood."
+    },
+    "pant-01": {
+      "season": "SS26",
+      "colour": "Off White",
+      "styleCode": "KV1168",
+      "retailPriceUsd": 85,
+      "description": "Off-white wide-leg women's pant from adidas with a satin finish and polka-dot pattern."
+    },
+    "pant-02": {
+      "season": "FW22",
+      "colour": "Black",
+      "releaseDate": "2022-09-22",
+      "styleCode": "471517 00 2 0034",
+      "retailPriceUsd": 220,
+      "description": "Black Yeezy Gap cargo pant in durable Cordura fabric with multiple pockets."
+    },
+    "pant-03": {
+      "season": "SS22",
+      "colour": "Black",
+      "releaseDate": "2022-05-27",
+      "styleCode": "4709840020000",
+      "retailPriceUsd": 180,
+      "description": "Black fleece jogging pant from Yeezy Gap."
+    },
+    "pant-04": {
+      "season": "FW25",
+      "colour": "Black",
+      "releaseDate": "2025-10-31",
+      "styleCode": "483979",
+      "retailPriceUsd": 60,
+      "description": "Black wide-leg fleece pants from the Uniqlo x Needles collaboration."
+    },
+    "pant-05": {
+      "season": "FW25",
+      "colour": "Dark Grey Heather/Black",
+      "styleCode": "HV0959-011",
+      "retailPriceUsd": 140,
+      "description": "Nike Tech Fleece joggers in dark grey heather with black contrast detailing and a smooth, lightweight build."
+    },
+    "pant-06": {
+      "season": "SS24",
+      "colour": "Black",
+      "releaseDate": "2024-02-22",
+      "styleCode": "FN7668-010",
+      "retailPriceUsd": 100,
+      "description": "Black Nike x NOCTA track pant in nylon, with a relaxed fit, tapered leg and elastic drawstring waist."
+    },
+    "pant-07": {
+      "season": "FW26",
+      "colour": "Crucifixion Multicolor",
+      "releaseDate": "2026-10-01",
+      "description": "All-cotton canvas painter pant from Supreme with a large-scale Crucifixion print."
+    },
+    "pant-08": {
+      "season": "SS22",
+      "colour": "Dark Green",
+      "releaseDate": "2022-05-27",
+      "styleCode": "4713030220000",
+      "retailPriceUsd": 140,
+      "description": "Dark green sateen cargo pant from Yeezy Gap."
+    },
+    "pant-09": {
+      "season": "SS22",
+      "colour": "Dark Blue",
+      "releaseDate": "2022-05-27",
+      "styleCode": "4709840220000",
+      "retailPriceUsd": 180,
+      "description": "Dark blue fleece jogging pant from Yeezy Gap."
+    },
+    "pant-10": {
+      "season": "FW26",
+      "colour": "Woodland Camo",
+      "releaseDate": "2026-09-24",
+      "description": "Woodland camo cargo pant from Supreme x Nike in water-resistant nylon taslan with jersey and taffeta lining, plus thigh cargo, hand and back pockets."
+    },
+    "pant-11": {
+      "season": "SS26",
+      "colour": "Black",
+      "styleCode": "KV1169",
+      "retailPriceUsd": 85,
+      "description": "Black wide-leg women's pant from adidas with a satin finish and polka-dot pattern."
+    },
+    "pant-12": {
+      "season": "SS22",
+      "colour": "Black",
+      "releaseDate": "2022-05-27",
+      "styleCode": "4713030020000",
+      "retailPriceUsd": 220,
+      "description": "Black sateen cargo pant from Yeezy Gap."
+    },
+    "pant-13": {
+      "season": "SS25",
+      "colour": "Black",
+      "releaseDate": "2025-03-14",
+      "styleCode": "HQ1734-010",
+      "retailPriceUsd": 175,
+      "description": "Black bike pant from Jordan x Nigel Sylvester in water-repellent waxed twill, with a tab fly, slash front pockets, an ankle zip vent and Brick by Brick embroidery."
+    },
+    "pant-14": {
+      "season": "FW26",
+      "colour": "Black",
+      "releaseDate": "2026-10-01",
+      "description": "Black cotton ripstop track pant from Supreme x Umbro."
+    },
+    "pant-15": {
+      "season": "SS25",
+      "colour": "Dark Grey Heather/Black",
+      "styleCode": "HV0959-063",
+      "retailPriceUsd": 120,
+      "description": "Nike Tech Fleece joggers with a tapered fit, structured waistband and zip pockets, in dark grey heather and black."
+    },
+    "tee-01": {
+      "season": "SS25",
+      "colour": "Bright White",
+      "releaseDate": "2025-06-11",
+      "retailPriceUsd": 91,
+      "description": "A clean white crew-neck tee from Fear of God Essentials, with a ribbed neckline, tonal branding and the signature rubberised label at the back neck."
+    },
+    "tee-02": {
+      "season": "FW26",
+      "colour": "Black",
+      "releaseDate": "2026-09-25",
+      "styleCode": "IX8507-010",
+      "description": "Heavyweight cotton Nike tee carrying graphics inspired by the Straw Hat crew's Jolly Roger flag from One Piece, in black."
+    },
+    "tee-03": {
+      "season": "SS26",
+      "colour": "Grey",
+      "releaseDate": "2026-06-26",
+      "styleCode": "JJ0565-060 / JA5696-06F",
+      "description": "Grey locker-room tee marking the New York Knicks' 2026 NBA Finals win, from Nike's authentic on-court range."
+    },
+    "tee-04": {
+      "season": "FW21",
+      "colour": "White",
+      "releaseDate": "2021-08-19",
+      "retailPriceUsd": 28,
+      "description": "Three-pack of white tagless tees from the Supreme x Hanes basics line, each with a small Supreme logo near the hem."
+    },
+    "tee-05": {
+      "season": "FW25",
+      "colour": "Black",
+      "releaseDate": "2025-12-12",
+      "styleCode": "TE034FW25BLK",
+      "retailPriceUsd": 70,
+      "description": "A stripped-back take on Sp5der's web graphic, in black with the standard tee cut."
+    },
+    "tee-06": {
+      "season": "FW23",
+      "colour": "Green",
+      "releaseDate": "2023-12-05",
+      "retailPriceUsd": 85,
+      "description": "Green Travis Scott CJ tee with a watch-face graphic made in collaboration with Audemars Piguet."
+    },
+    "tee-07": {
+      "season": "FW23",
+      "colour": "Black",
+      "releaseDate": "2023-12-05",
+      "retailPriceUsd": 85,
+      "description": "Black vintage-style Travis Scott CJ tee from the Audemars Piguet collaboration."
+    },
+    "tee-08": {
+      "season": "FW21",
+      "colour": "Black",
+      "releaseDate": "2021-08-19",
+      "retailPriceUsd": 30,
+      "description": "Three-pack of black tagless tees from the Supreme x Hanes basics line, each with a small Supreme logo near the hem."
+    },
+    "tee-09": {
+      "season": "SS23",
+      "colour": "Black/Red",
+      "styleCode": "ANAR 1100 BLAC",
+      "retailPriceUsd": 300,
+      "description": "Black and red long-sleeve tee from Gallery Dept. with the Anarchy graphic."
+    },
+    "tee-10": {
+      "season": "SS23",
+      "colour": "Antique White",
+      "styleCode": "DB 1032 WHIT",
+      "retailPriceUsd": 350,
+      "description": "Antique white cotton tee with Gallery Dept.'s hand-treated Dead Batteries graphic."
+    },
+    "tee-11": {
+      "season": "SS26",
+      "colour": "Black",
+      "retailPriceUsd": 180,
+      "description": "Long-sleeve black tee from Vale Forever with the Psychopath graphic."
+    },
+    "tee-12": {
+      "colour": "Black/Red",
+      "releaseDate": "2020-10-01",
+      "retailPriceUsd": 100,
+      "description": "BAPE tee in 100% cotton with the Ape Head logo in red over a black camo ground."
+    },
+    "tee-13": {
+      "season": "SS22",
+      "colour": "Black",
+      "releaseDate": "2022-05-27",
+      "styleCode": "719611 TMVQ1 1000",
+      "retailPriceUsd": 140,
+      "description": "Black long-sleeve Yeezy Gap tee with the Dove graphic."
+    },
+    "tee-14": {
+      "season": "FW26",
+      "colour": "White",
+      "releaseDate": "2026-10-15",
+      "description": "White Champion-style tee from the Supreme x Martine Rose collaboration."
+    },
+    "tee-15": {
+      "colour": "Black",
+      "retailPriceUsd": 160,
+      "description": "Black Vale Forever tee with a graphic drawn from medieval Lancelot imagery."
+    },
+    "tee-16": {
+      "season": "SS26",
+      "colour": "Black",
+      "releaseDate": "2026-06-25",
+      "retailPriceUsd": 48,
+      "description": "Supreme's all-cotton tee in black, printed with a graphic on both the front and the back."
+    },
+    "tee-17": {
+      "season": "FW26",
+      "colour": "White",
+      "releaseDate": "2026-09-25",
+      "styleCode": "IX8507-100",
+      "description": "White Nike tee with artwork inspired by the One Piece Straw Hat crew's Jolly Roger flag."
+    },
+    "tee-18": {
+      "season": "SS26",
+      "colour": "Black",
+      "releaseDate": "2026-02-26",
+      "retailPriceUsd": 48,
+      "description": "Black Supreme tee with a bold Spider-Man graphic on a classic silhouette."
+    },
+    "tee-19": {
+      "season": "SS26",
+      "colour": "Black",
+      "releaseDate": "2026-02-26",
+      "retailPriceUsd": 44,
+      "description": "Black Supreme tee that restyles the box logo in Arabic script."
+    },
+    "tee-20": {
+      "season": "FW25",
+      "colour": "Black",
+      "releaseDate": "2025-08-28",
+      "retailPriceUsd": 54,
+      "description": "Black Supreme tee with a Playboi Carti graphic."
+    },
+    "tee-21": {
+      "season": "SS22",
+      "colour": "White",
+      "retailPriceUsd": 100,
+      "description": "White tee with the Travis Scott mouth graphic."
+    },
+    "tee-22": {
+      "season": "SS26",
+      "colour": "Grey Wash",
+      "retailPriceUsd": 160,
+      "description": "Grey-wash tee from Godspeed with the Up2Par graphic."
+    },
+    "tee-23": {
+      "season": "SS26",
+      "colour": "White",
+      "releaseDate": "2026-02-26",
+      "retailPriceUsd": 48,
+      "description": "White Supreme tee with a Spider-Man graphic."
+    },
+    "tee-24": {
+      "season": "SS21",
+      "colour": "Washed Black",
+      "releaseDate": "2021-07-28",
+      "retailPriceUsd": 48,
+      "description": "Washed black Travis Scott Cactus Jack tee made with Fragment, with the Danger graphic."
+    },
+    "tee-25": {
+      "season": "FW24",
+      "colour": "Light Heather Gray",
+      "releaseDate": "2024-11-15",
+      "styleCode": "125HO244368F",
+      "retailPriceUsd": 55,
+      "description": "Light heather grey tee from Fear of God Essentials in 100% cotton jersey, with a relaxed fit, dropped shoulders and a ribbed crew neck."
+    },
+    "tee-26": {
+      "season": "FW26",
+      "colour": "White",
+      "releaseDate": "2026-08-20",
+      "retailPriceUsd": 44,
+      "description": "White Supreme box logo tee from the devotional Prayer Card release."
+    },
+    "tee-27": {
+      "season": "SS26",
+      "colour": "Black",
+      "releaseDate": "2026-04-23",
+      "retailPriceUsd": 42,
+      "description": "Two-pack of black tagless Hanes tees from Supreme with Spider-Man detailing."
+    },
+    "tee-28": {
+      "season": "SS23",
+      "colour": "Influence",
+      "styleCode": "KHM031086-519",
+      "retailPriceUsd": 78,
+      "description": "Kith tee in 280GSM cotton, garment dyed and washed for a high-low colour effect, with serif Kith branding on the left chest and side-seam slits."
+    },
+    "tee-29": {
+      "season": "SS20",
+      "colour": "Blue",
+      "releaseDate": "2020-07-10",
+      "retailPriceUsd": 75,
+      "description": "Blue tee from the Juice WRLD x Vlone Legends Never Die merch, with the album title on the front and a 999 logo on the back."
+    },
+    "tee-30": {
+      "season": "SS26",
+      "colour": "Black",
+      "styleCode": "KHMG030501-001",
+      "retailPriceUsd": 70,
+      "description": "Black vintage-wash tee from Kith celebrating the New York Knicks' 2026 championship."
+    }
+  }
+}

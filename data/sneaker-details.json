@@ -1,0 +1,244 @@
+{
+  "source": "StockX product detail pages (facts only; descriptions are original wording), pulled 2026-10-24",
+  "note": "Keyed by StockX slug. releaseDate omitted where StockX only showed a 01/01 placeholder. retailPriceUsd is original retail in USD.",
+  "items": {
+    "adidas-samba-og-cloud-white-core-black": {
+      "name": "adidas Samba OG Cloud White Core Black",
+      "description": "Full-grain leather Samba OG in white and black, with grey suede detailing and a contrasting black heel tab.",
+      "styleCode": "BZ0057/B75806",
+      "colour": "Cloud White/Core Black/Clear Granite",
+      "retailPriceUsd": 100
+    },
+    "adidas-yeezy-boost-350-v2-mx-dark-salt": {
+      "name": "adidas Yeezy Boost 350 V2 MX Dark Salt",
+      "description": "Yeezy Boost 350 V2 in a grey and black tonal mix, with the signature side stripe and a cushioned Boost midsole.",
+      "styleCode": "ID4811",
+      "colour": "Dark Salt",
+      "retailPriceUsd": 230,
+      "releaseDate": "2023-08-21"
+    },
+    "adidas-yeezy-foam-rnnr-mx-brown-blue": {
+      "name": "adidas Yeezy Foam RNNR MX Cinder",
+      "description": "Moulded foam Yeezy Foam RNNR in a dark, earthy MX Cinder tone, with a porous, ventilated design.",
+      "styleCode": "ID4126",
+      "colour": "MX Cinder",
+      "retailPriceUsd": 90,
+      "releaseDate": "2023-05-31"
+    },
+    "adidas-yeezy-foam-rnnr-mineral-blue": {
+      "name": "adidas Yeezy Foam RNNR Mineral Blue",
+      "description": "Yeezy Foam RNNR in Mineral Blue, made from an EVA and algae-based foam with oval cut-outs for ventilation.",
+      "styleCode": "GV7903",
+      "colour": "Mineral Blue",
+      "retailPriceUsd": 80,
+      "releaseDate": "2021-05-29"
+    },
+    "adidas-yeezy-slide-slate-marine": {
+      "name": "adidas Yeezy Slide Slate Marine",
+      "description": "Minimal one-piece Yeezy Slide in Slate Marine with soft, cloud-like cushioning.",
+      "styleCode": "ID2349",
+      "colour": "Slate Marine",
+      "retailPriceUsd": 70,
+      "releaseDate": "2023-08-11"
+    },
+    "asics-gel-kayano-14-black-pure-silver": {
+      "name": "ASICS Gel-Kayano 14 Black Pure Silver",
+      "description": "Late-2000s-style running shoe with a black mesh upper, synthetic leather overlays and silver accents.",
+      "styleCode": "1201A019-006",
+      "colour": "Black/Pure Silver",
+      "retailPriceUsd": 150
+    },
+    "asics-gel-kayano-14-cream-black-metallic-plum": {
+      "name": "ASICS Gel-Kayano 14 Cream Black Metallic Plum",
+      "description": "Gel-Kayano 14 in cream and black with a leather and mesh upper and a lace-up closure.",
+      "styleCode": "1201A019-108",
+      "colour": "Cream/Black",
+      "retailPriceUsd": 150,
+      "releaseDate": "2023-05-30"
+    },
+    "air-jordan-1-retro-high-og-chicago-reimagined-lost-and-found": {
+      "name": "Air Jordan 1 Retro High OG Chicago Reimagined (Lost & Found)",
+      "description": "Jordan 1 High in the Chicago colourway, styled to look aged, with pre-yellowed accents and cracked leather.",
+      "styleCode": "DZ5485-612",
+      "colour": "Varsity Red/Black-Sail-Muslin",
+      "retailPriceUsd": 180,
+      "releaseDate": "2022-11-19"
+    },
+    "air-jordan-1-retro-high-og-shadow-brown": {
+      "name": "Air Jordan 1 Retro High OG Shadow Brown",
+      "description": "Jordan 1 High OG in an earthy palette of shadow brown, soft pearl, British tan and team red.",
+      "styleCode": "DZ5485-201",
+      "colour": "Shadow Brown/Soft Pearl/Light British Tan/Team Red",
+      "retailPriceUsd": 185,
+      "releaseDate": "2026-08-01"
+    },
+    "air-jordan-1-retro-high-dark-mocha": {
+      "name": "Air Jordan 1 Retro High Dark Mocha",
+      "description": "Jordan 1 High with a sail leather base and dark mocha and black colour-blocking.",
+      "styleCode": "555088-105",
+      "colour": "Sail/Dark Mocha-Black-Black",
+      "retailPriceUsd": 170,
+      "releaseDate": "2020-10-31"
+    },
+    "air-jordan-1-retro-high-virgil-abloh-archive-alaska": {
+      "name": "Air Jordan 1 Retro High Virgil Abloh Archive Alaska",
+      "description": "All-white Jordan 1 High carrying Virgil Abloh's deconstructed design language; ships with extra laces and a booklet.",
+      "styleCode": "AA3834-100",
+      "colour": "White",
+      "retailPriceUsd": 230,
+      "releaseDate": "2026-04-03"
+    },
+    "air-jordan-4-retro-black-cat-2020": {
+      "name": "Air Jordan 4 Retro Black Cat (2020)",
+      "description": "Jordan 4 in all-black nubuck suede with black hardware, netting and outsole.",
+      "styleCode": "CU1110-010",
+      "colour": "Black/Black-Light Graphite",
+      "retailPriceUsd": 190,
+      "releaseDate": "2020-01-22"
+    },
+    "air-jordan-4-retro-military-blue-2024": {
+      "name": "Air Jordan 4 Retro Military Blue (2024)",
+      "description": "Jordan 4 with an off-white leather base and military blue on the eyelet wings, heel and midsole.",
+      "styleCode": "FV5029-141",
+      "colour": "Off-White/Military Blue/Neutral Grey",
+      "retailPriceUsd": 215,
+      "releaseDate": "2024-05-04"
+    },
+    "jordan-4-retro-thunder-2012": {
+      "name": "Air Jordan 4 Retro Thunder (2012)",
+      "description": "Black Jordan 4 with Tour Yellow accents, built from suede, synthetic leather and rubber, with an Air unit.",
+      "styleCode": "308497-008",
+      "colour": "Black/Tour Yellow",
+      "retailPriceUsd": 160,
+      "releaseDate": "2012-12-22"
+    },
+    "air-jordan-4-retro-toro-bravo-2026": {
+      "name": "Air Jordan 4 Retro Toro Bravo (2026)",
+      "description": "Jordan 4 with a red nubuck upper and black wings and midsole.",
+      "styleCode": "FQ8138-600",
+      "colour": "Black/White-Red",
+      "retailPriceUsd": 220,
+      "releaseDate": "2026-05-30"
+    },
+    "air-jordan-5-retro-halloween": {
+      "name": "Air Jordan 5 Retro Halloween",
+      "description": "Jordan 5 in black with picante red and green accents.",
+      "styleCode": "HQ7978-001",
+      "colour": "Black/Picante Red/Green",
+      "retailPriceUsd": 220,
+      "releaseDate": "2026-10-24"
+    },
+    "air-jordan-5-retro-wolf-grey-2026": {
+      "name": "Air Jordan 5 Retro Wolf Grey (2026)",
+      "description": "Jordan 5 in grey with white details; comes with two lace locks.",
+      "styleCode": "DD0587-002",
+      "colour": "Anthracite/Wolf Grey/Clear/Black",
+      "retailPriceUsd": 220,
+      "releaseDate": "2026-02-28"
+    },
+    "nike-air-force-1-low-supreme-box-logo-black": {
+      "name": "Nike Air Force 1 Low Supreme Box Logo Black",
+      "description": "All-black leather Air Force 1 Low with a red Supreme Box Logo on the outside heel.",
+      "styleCode": "CU9225-001",
+      "colour": "Black/Black-Black",
+      "retailPriceUsd": 118,
+      "releaseDate": "2020-03-05"
+    },
+    "nike-air-force-1-low-supreme-box-logo-white": {
+      "name": "Nike Air Force 1 Low Supreme Box Logo White",
+      "description": "All-white leather Air Force 1 Low with a red Supreme Box Logo on the outside heel.",
+      "styleCode": "CU9225-100",
+      "colour": "White/White-White",
+      "retailPriceUsd": 118,
+      "releaseDate": "2020-03-05"
+    },
+    "nike-air-max-95-og-big-bubble-pink-foam-womens": {
+      "name": "Nike Air Max 95 OG Big Bubble Pink Foam (Women's)",
+      "description": "Air Max 95 with layered black and white panels, pink foam accents and visible Air windows.",
+      "styleCode": "HJ5996-001",
+      "colour": "Smoke Grey/Pink Foam",
+      "retailPriceUsd": 180,
+      "releaseDate": "2025-05-01"
+    },
+    "nike-air-max-95-premium-greedy-2026": {
+      "name": "Nike Air Max 95 Premium Greedy (2026)",
+      "description": "Premium Air Max 95 in a high-contrast black, volt and white palette.",
+      "styleCode": "IM2211-001",
+      "colour": "Black/Volt-Safety Orange",
+      "retailPriceUsd": 200,
+      "releaseDate": "2026-09-08"
+    },
+    "nike-air-more-uptempo-96-black-white-2023": {
+      "name": "Nike Air More Uptempo 96 Black White (2023)",
+      "description": "Mostly black nubuck Uptempo with white AIR lettering across the side.",
+      "styleCode": "FV2291-001",
+      "colour": "Black/Black/White",
+      "retailPriceUsd": 170,
+      "releaseDate": "2023-10-15"
+    },
+    "nike-caitlin-1-hot-punch-womens": {
+      "name": "Nike Caitlin 1 Hot Punch (Women's)",
+      "description": "Caitlin Clark's first signature basketball shoe in a Hot Punch and Neo Pink finish, with an Opticast upper and forefoot Air Zoom unit.",
+      "styleCode": "IH7423-600 / IH7421-600",
+      "colour": "Hot Punch/Neo Pink/Black/Laser Crimson/Racer Blue",
+      "retailPriceUsd": 140,
+      "releaseDate": "2026-10-14"
+    },
+    "nike-kd-6-peanut-butter-and-jelly-pbj-2026": {
+      "name": "Nike KD 6 Peanut Butter & Jelly (PBJ) (2026)",
+      "description": "Kevin Durant's KD 6 in the nostalgic PBJ colourway of laser orange, raspberry red and black.",
+      "styleCode": "IB6903-800",
+      "colour": "Laser Orange/Raspberry Red/Black",
+      "retailPriceUsd": 140,
+      "releaseDate": "2026-03-20"
+    },
+    "nike-kobe-5-protro-dodgers": {
+      "name": "Nike Kobe 5 Protro Dodgers",
+      "description": "Low-profile Kobe 5 Protro in Dodgers-inspired colours; includes white and red laces.",
+      "styleCode": "IO6256-400",
+      "colour": "Rush Blue/Wolf Grey/Comet Red",
+      "retailPriceUsd": 190,
+      "releaseDate": "2026-08-15"
+    },
+    "nike-zoom-vomero-5-photon-dust-hydrogen-blue-silver-womens": {
+      "name": "Nike Zoom Vomero 5 Photon Dust Hydrogen Blue Metallic Silver (Women's)",
+      "description": "Zoom Vomero 5 in Photon Dust with Hydrogen Blue, Cobalt Bliss and metallic silver.",
+      "styleCode": "IV2381-025",
+      "colour": "Photon Dust/Hydrogen Blue/Cobalt Bliss/Metallic Silver",
+      "retailPriceUsd": 170,
+      "releaseDate": "2026-04-20"
+    },
+    "on-running-cloudtilt-black-ivory-womens": {
+      "name": "On Running Cloudtilt Black Ivory (Women's)",
+      "description": "Lifestyle-focused On Cloudtilt in black and ivory with performance-inspired cushioning.",
+      "styleCode": "3WE10051430",
+      "colour": "Black/Ivory",
+      "retailPriceUsd": 160,
+      "releaseDate": "2024-06-10"
+    },
+    "salomon-xt-6-vanilla-ice-black-silver-cloud": {
+      "name": "Salomon XT-6 Vanilla Ice Black Silver Cloud",
+      "description": "Layered trail-inspired XT-6 in neutral Vanilla Ice, black and Silver Cloud.",
+      "styleCode": "L49211300",
+      "colour": "Vanilla Ice/Black/Silver Cloud",
+      "retailPriceUsd": 185,
+      "releaseDate": "2026-07-01"
+    },
+    "timberland-6-classic-waterproof-boot-wheat-mesh-lining": {
+      "name": "Timberland 6-Inch Classic Waterproof Boot Wheat (Mesh Lining)",
+      "description": "Wheat nubuck waterproof boot with a mesh lining, padded collar and sturdy outsole.",
+      "styleCode": "TB118094-231",
+      "colour": "Wheat",
+      "retailPriceUsd": 198,
+      "releaseDate": "2024-11-27"
+    },
+    "ugg-tasman-ii-slipper-black": {
+      "name": "UGG Tasman II Slipper Black",
+      "description": "Black UGG Tasman II slipper built for everyday comfort.",
+      "styleCode": "1174671-BLK",
+      "colour": "Black",
+      "retailPriceUsd": 125,
+      "releaseDate": "2025-09-17"
+    }
+  }
+}

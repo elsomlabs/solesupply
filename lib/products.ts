@@ -53,3 +53,56 @@ export function formatGbp(n: number): string {
 export function getProductImage(slug: string): string {
   return `/products/${slug}.webp`;
 }
+
+export type BrandKey = "jordan" | "nike" | "adidas" | "asics" | "more";
+
+export function getBrandKey(p: Product): BrandKey {
+  const name = p.name.toLowerCase();
+  if (name.startsWith("jordan")) return "jordan";
+  if (name.startsWith("nike")) return "nike";
+  if (name.startsWith("adidas")) return "adidas";
+  if (name.startsWith("asics")) return "asics";
+  return "more";
+}
+
+export const BRANDS: Array<{ key: BrandKey; label: string; heroSlug: string }> = [
+  { key: "jordan", label: "Jordan", heroSlug: "jordan-4-retro-thunder-2023" },
+  { key: "nike", label: "Nike", heroSlug: "nike-air-more-uptempo-96-black-white-2023-2026" },
+  { key: "adidas", label: "adidas", heroSlug: "adidas-yeezy-boost-350-v2-mx-dark-salt" },
+  { key: "asics", label: "ASICS", heroSlug: "asics-gel-kayano-14-cream-black-metallic-plum" },
+  { key: "more", label: "More brands", heroSlug: "salomon-xt-6-vanilla-ice-black-silver-cloud" },
+];
+
+export function getProductsByBrand(key: BrandKey): Product[] {
+  return products.filter((product) => getBrandKey(product) === key);
+}
+
+export function getBrandSummaries(): Array<{
+  key: BrandKey;
+  label: string;
+  count: number;
+  heroSlug: string;
+  heroImage: string;
+}> {
+  return BRANDS.flatMap((brand) => {
+    const count = getProductsByBrand(brand.key).length;
+    if (count === 0) return [];
+    return [
+      {
+        key: brand.key,
+        label: brand.label,
+        count,
+        heroSlug: brand.heroSlug,
+        heroImage: getProductImage(brand.heroSlug),
+      },
+    ];
+  });
+}
+
+if (process.env.NODE_ENV !== "production") {
+  for (const brand of BRANDS) {
+    if (!getProductBySlug(brand.heroSlug)) {
+      console.warn(`Missing hero product for brand "${brand.key}": ${brand.heroSlug}`);
+    }
+  }
+}

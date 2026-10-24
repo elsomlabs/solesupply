@@ -1,0 +1,277 @@
+main.seller {
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "title"
+    "lede"
+    "card"
+    "rest";
+}
+
+.title {
+  grid-area: title;
+}
+
+.lede {
+  grid-area: lede;
+}
+
+.rest {
+  grid-area: rest;
+  min-width: 0;
+  max-width: 680px;
+}
+
+.card {
+  grid-area: card;
+  align-self: start;
+  max-width: 680px;
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.seller p.glance {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.facts {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.seller .facts li {
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.seller .facts li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.seller a.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 0;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 150ms, color 150ms;
+}
+
+.seller a.button:hover {
+  background: var(--ink);
+  color: var(--accent);
+}
+
+.seller a.button:focus-visible,
+.seller a.mail:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.seller p.address {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+}
+
+.end {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.seller a.mail {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  main.seller {
+    grid-template-columns: minmax(0, 680px) minmax(280px, 360px);
+    column-gap: 40px;
+    align-items: start;
+    justify-content: start;
+    grid-template-areas:
+      "title card"
+      "lede card"
+      "rest card";
+  }
+
+  .card {
+    position: sticky;
+    top: 96px;
+    width: 100%;
+    max-width: 360px;
+    margin-top: 0;
+  }
+
+  .seller .end a.button {
+    width: auto;
+    min-width: 280px;
+  }
+}
+
+.seller h2.heading {
+  margin: 36px 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.group {
+  margin: 20px 0 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.seller ol.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.num {
+  color: var(--accent);
+  font-size: 32px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  min-width: 1.5ch;
+}
+
+.seller .step p {
+  margin: 0;
+}
+
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seller li.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.chip svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  flex: none;
+}
+
+.faq {
+  min-width: 0;
+}
+
+.item {
+  border-top: 1px solid var(--line);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::marker {
+  content: "";
+}
+
+.summary span {
+  min-width: 0;
+}
+
+.summary::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) center / 12px 1px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) center / 1px 12px no-repeat;
+}
+
+.item[open] > .summary::after {
+  background: linear-gradient(var(--ink), var(--ink)) center / 12px 1px no-repeat;
+}
+
+.seller summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.seller .item p {
+  margin: 0;
+  padding: 0 28px 14px 0;
+}
