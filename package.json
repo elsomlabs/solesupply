@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "serve out -l 3000",
+    "lint": "next lint",
+    "images": "node scripts/process-images.mjs"
   },
   "dependencies": {
     "next": "14.2.35",
@@ -21,6 +22,8 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",
+    "serve": "^14.2.6",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

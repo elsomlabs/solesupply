@@ -1,15 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { BrandStrip } from "@/components/home/BrandStrip";
 import { DropHero } from "@/components/home/DropHero";
 import { EditorialFeature } from "@/components/home/EditorialFeature";
 import { CenteredHeader } from "@/components/product/CenteredHeader";
 import { LeftHeader } from "@/components/product/LeftHeader";
 import { PlainCard } from "@/components/product/PlainCard";
-import { ProductCard } from "@/components/product/ProductCard";
 import { ProductRow } from "@/components/product/ProductRow";
-import { apparel, laces, sneakers } from "@/lib/products";
+import { apparel, laces } from "@/lib/products";
+import { formatGbp, getAllProducts, getLowestPrice, getProductImage } from "../../lib/products";
 import styles from "@/components/product/product.module.css";
+
+const latestSneakers = getAllProducts()
+  .map((product) => ({ product, price: getLowestPrice(product) }))
+  .sort((a, b) => b.price - a.price || a.product.name.localeCompare(b.product.name, "en"))
+  .slice(0, 15);
 
 const BRANDS = [
   { name: "Supreme", src: "/logos/supreme.svg", height: 42 },
@@ -26,7 +32,7 @@ const BRANDS = [
 export default function Home() {
   return (
     <main>
-      <DropHero href="#" ctaLabel="Shop now" />
+      <DropHero href="/shop/" ctaLabel="Shop now" />
       <BrandStrip brands={BRANDS} />
       <section className={`${styles.sec} ${styles.wrap}`} aria-labelledby="h-sneakers">
         <ProductRow
@@ -35,7 +41,7 @@ export default function Home() {
             <CenteredHeader
               id="h-sneakers"
               title="Latest sneakers"
-              viewAllHref="/sneakers/"
+              viewAllHref="/shop/"
               previousDisabled={scroll.atStart}
               nextDisabled={scroll.atEnd}
               onPrevious={() => scroll.by(-1)}
@@ -43,31 +49,29 @@ export default function Home() {
             />
           )}
         >
-          {sneakers.map((product) => (
-            <ProductCard key={product.id} product={product} href={`/sneakers/${product.id}/`} />
+          {latestSneakers.map(({ product, price }) => (
+            <Link key={product.slug} href={`/shop/${product.slug}/`} className={`${styles.card} ${styles.sneakerCard}`}>
+              <div className={styles.cardMedia}>
+                <img src={getProductImage(product.slug)} alt={product.name} />
+              </div>
+              <p className={styles.cardName}>{product.name}</p>
+              <div className={styles.price}>
+                <small>From</small>
+                {formatGbp(price)}
+              </div>
+            </Link>
           ))}
         </ProductRow>
       </section>
       <EditorialFeature
-        title="The Denim Edit"
+        title="text"
         weight="heavy"
-        body="Raw and washed denim, trucker jackets and the tees that go under them. Straight cuts and everyday staples, built to fade your way."
+        body="text"
         ctaHref="#"
         images={[
-          { src: "/images/denim-1.webp", alt: "Light-wash denim trucker jacket" },
-          { src: "/images/denim-2.webp", alt: "Model in white tee and loose light-wash jeans" },
-          { src: "/images/denim-3.webp", alt: "Model in olive work jacket and cap" },
-        ]}
-      />
-      <EditorialFeature
-        title="Night Shift Capsule"
-        weight="light"
-        body="A small run of premium streetwear essentials, in store and online now. Elevated design you can wear every day. Get yours before your size is gone."
-        ctaHref="#"
-        images={[
-          { src: "/images/capsule-1.webp", alt: "Model in black crochet bucket hat" },
-          { src: "/images/capsule-2.webp", alt: "Back of a pinstripe hooded jacket" },
-          { src: "/images/capsule-3.webp", alt: "Pink long-sleeve top" },
+          { src: "", alt: "" },
+          { src: "", alt: "" },
+          { src: "", alt: "" },
         ]}
       />
       <section className={`${styles.sec} ${styles.wrap}`} aria-labelledby="h-laces" style={{ paddingTop: 112 }}>

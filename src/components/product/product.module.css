@@ -31,27 +31,29 @@
 .ib {
   display: inline-grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   padding: 0;
-  border: 0;
+  border: 1px solid rgba(10, 10, 10, 0.55);
   border-radius: 50%;
-  background: none;
+  background: #fff;
   color: var(--ink);
   cursor: pointer;
 }
 
 .ib:hover {
+  border-color: var(--ink);
   background: var(--surface-tile);
 }
 
 .shead .ib svg {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
 }
 
 .shead .ib[disabled] {
-  background: none;
+  border-color: #d4d4d4;
+  background: #fff;
   color: #b5b5b5;
   cursor: default;
 }
@@ -142,6 +144,28 @@
   overflow: hidden;
   aspect-ratio: 4 / 5;
   background: var(--surface-tile);
+}
+
+.row:has(.sneakerCard) {
+  padding-top: 10px;
+  padding-bottom: 16px;
+}
+
+.sneakerCard .cardMedia {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.06), 0 8px 22px rgba(10, 10, 10, 0.14);
+}
+
+.sneakerCard .cardName,
+.sneakerCard .price {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.sneakerCard .price small {
+  color: var(--ink-2);
+  font-size: 12px;
 }
 
 .cardMedia img {

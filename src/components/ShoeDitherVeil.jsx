@@ -1,10 +1,13 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 import { Mesh, Program, RenderTarget, Renderer, Texture, Triangle } from 'ogl'
 import './ShoeDitherVeil.css'
 
 const ORDERED = { bayer: 0, noise: 1, lines: 2 }
+
+// Matches the --accent token (#C8FF00), about vec3(0.784, 1.0, 0.0).
+const DITHER_COLOR = '#C8FF00'
 
 const MASK_SCALE = 0.5
 const MAX_BURSTS = 4
@@ -482,9 +485,51 @@ const loadBitmaps = async (base, count, width, height, signal) => {
   return bitmaps
 }
 
-export default function ShoeDitherVeil({
+/**
+ * @typedef {Object} ShoeDitherControl
+ * @property {(x: number, y: number, strength: number) => void} setVirtualPointer
+ * @property {() => void} clearVirtualPointer
+ */
+
+/**
+ * @typedef {Object} ShoeDitherVeilProps
+ * @property {string} [framesUrl]
+ * @property {string} [dotColor]
+ * @property {string} [fit]
+ * @property {string} [mode]
+ * @property {string} [pattern]
+ * @property {number} [pixelSize]
+ * @property {number} [temporalSmoothing]
+ * @property {number} [hysteresis]
+ * @property {number} [levels]
+ * @property {string} [palette]
+ * @property {number} [contrast]
+ * @property {number} [brightness]
+ * @property {number} [revealRadius]
+ * @property {number} [softness]
+ * @property {number} [linger]
+ * @property {number} [strength]
+ * @property {number} [minDensity]
+ * @property {string} [rimColor]
+ * @property {number} [rim]
+ * @property {boolean} [reverse]
+ * @property {boolean} [wander]
+ * @property {boolean} [clickBurst]
+ * @property {string} [ariaLabel]
+ * @property {string} [className]
+ * @property {import('react').CSSProperties} [style]
+ * @property {import('react').Ref<HTMLCanvasElement>} [maskCanvasRef]
+ */
+
+const clamp01 = (value) => {
+  const n = Number(value)
+  if (!Number.isFinite(n)) return 0
+  return Math.min(1, Math.max(0, n))
+}
+
+const ShoeDitherVeil = forwardRef(function ShoeDitherVeil({
   framesUrl = '/shoe-frames/manifest.json',
-  dotColor = '#FF5A1F',
+  dotColor = DITHER_COLOR,
   fit = 'contain',
   mode = 'dither',
   pattern = 'bayer',
@@ -509,10 +554,32 @@ export default function ShoeDitherVeil({
   className = '',
   style = undefined,
   maskCanvasRef,
-}) {
+}, ref) {
   const containerRef = useRef(null)
   const settingsRef = useRef(null)
   const wakeRef = useRef(() => {})
+  const virtualRef = useRef(null)
+
+  // x and y are 0–1 across the shoe canvas, origin top-left. strength is 0–1.
+  // A real pointer over the canvas wins and the virtual pointer is ignored.
+  // clearVirtualPointer() hands control back to the real pointer. With neither
+  // active, the reveal eases back to rest on the same fade as a normal leave.
+  useImperativeHandle(ref, () => /** @type {ShoeDitherControl} */ ({
+    setVirtualPointer(x, y, strength) {
+      const prev = virtualRef.current
+      virtualRef.current = {
+        x: clamp01(x),
+        y: clamp01(y),
+        strength: clamp01(strength),
+        fresh: prev ? prev.fresh : true,
+      }
+      wakeRef.current()
+    },
+    clearVirtualPointer() {
+      virtualRef.current = null
+      wakeRef.current()
+    },
+  }), [])
 
   useEffect(() => {
     settingsRef.current = {
@@ -816,21 +883,34 @@ export default function ShoeDitherVeil({
       }
 
       const wanderOn = s.wander && !reducedMotion
+      const virtual = pointer.inside ? null : virtualRef.current
       let targetX = pointer.x
       let targetY = pointer.y
-      if (!pointer.inside && wanderOn) {
+      let presenceTarget = pointer.inside ? 1 : 0
+      let snap = pointer.fresh
+      if (!pointer.inside && virtual) {
+        targetX = virtual.x * width
+        targetY = virtual.y * height
+        presenceTarget = virtual.strength
+        drift = 0
+        if (virtual.fresh) {
+          snap = true
+          virtual.fresh = false
+        }
+      } else if (!pointer.inside && wanderOn) {
         drift = Math.min(1, drift + dt / 1.2)
         const [wx, wy] = wanderAt(now / 1000, width, height)
         const k = drift * drift * (3 - 2 * drift)
         targetX += (wx - targetX) * k
         targetY += (wy - targetY) * k
+        presenceTarget = 1
       } else {
         drift = 0
       }
 
-      presence += ((pointer.inside || wanderOn ? 1 : 0) - presence) * (1 - Math.exp(-dt / 0.16))
+      presence += (presenceTarget - presence) * (1 - Math.exp(-dt / 0.16))
 
-      if (pointer.fresh) {
+      if (snap) {
         brush.x = brush.px = targetX
         brush.y = brush.py = targetY
         pointer.fresh = false
@@ -1091,4 +1171,6 @@ export default function ShoeDitherVeil({
       aria-label={ariaLabel}
     />
   )
-}
+})
+
+export default /** @type {import('react').ForwardRefExoticComponent<ShoeDitherVeilProps & import('react').RefAttributes<ShoeDitherControl>>} */ (ShoeDitherVeil)

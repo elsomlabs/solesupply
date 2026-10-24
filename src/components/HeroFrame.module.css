@@ -1,0 +1,95 @@
+.frame {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  height: 90%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.box {
+  /* The rotating shoe spans x 21–521 and y 127–411 inside the 538 canvas. */
+  position: absolute;
+  left: calc(21 / 538 * 100% - 24px);
+  right: calc(17 / 538 * 100% - 24px);
+  top: calc(127 / 538 * 100% - 24px);
+  bottom: max(calc(127 / 538 * 100% - 24px), calc(194px - 5.556%));
+}
+
+.bracket {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+.tl {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.tr {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.bl {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.br {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.caption,
+.counter {
+  position: absolute;
+  top: calc(100% + 4px);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.caption {
+  left: 0;
+}
+
+.counter {
+  right: 0;
+}
+
+@media (max-width: 599px) {
+  .box {
+    top: calc(127 / 538 * 100% - 28px);
+    bottom: auto;
+    height: 40px;
+  }
+
+  .bracket {
+    width: 20px;
+    height: 20px;
+  }
+
+  .caption,
+  .counter {
+    top: calc(100% + 4px);
+  }
+}

@@ -1,0 +1,38 @@
+.note {
+  margin: 10px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.picker .option {
+  height: auto;
+  min-width: 72px;
+  min-height: 54px;
+  padding: 8px 10px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.option small {
+  color: var(--ink-muted);
+  font-size: 11px;
+}
+
+.option[aria-checked="true"] {
+  border-color: #0a0a0a;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.option[aria-checked="true"] small {
+  color: #fff;
+}
+
+.delivery {
+  margin: 14px 0 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+}

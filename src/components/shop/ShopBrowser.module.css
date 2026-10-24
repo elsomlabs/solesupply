@@ -1,0 +1,51 @@
+.filters input {
+  height: 36px;
+  min-width: 200px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font: 400 14px/1 var(--font-sans);
+  padding: 0 10px;
+}
+
+.results {
+  margin-top: 40px;
+}
+
+.card:hover .photo {
+  transform: translateY(-4px);
+}
+
+.media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #fff;
+}
+
+.frame {
+  position: absolute;
+  inset: 9%;
+}
+
+.photo {
+  object-fit: contain;
+  transition: transform 300ms ease-out;
+}
+
+.placeholder {
+  padding: 16px;
+  color: var(--ink-2);
+  font-size: 11.5px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sizes {
+  margin: 2px 0 0;
+  color: var(--ink-muted);
+}

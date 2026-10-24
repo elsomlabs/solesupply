@@ -30,13 +30,13 @@ export function CenteredHeader({
           disabled={previousDisabled}
           onClick={onPrevious}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" aria-hidden="true">
             <path d="M14.5 6l-6 6 6 6" />
           </svg>
         </button>
         <h2 id={id}>{title}</h2>
         <button className={styles.ib} type="button" aria-label="Next" disabled={nextDisabled} onClick={onNext}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" aria-hidden="true">
             <path d="M9.5 6l6 6-6 6" />
           </svg>
         </button>

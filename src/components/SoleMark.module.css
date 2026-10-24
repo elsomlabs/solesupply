@@ -23,6 +23,10 @@
   color: var(--on-drop-ground);
 }
 
+.accent {
+  color: var(--accent);
+}
+
 .left {
   text-align: left;
 }

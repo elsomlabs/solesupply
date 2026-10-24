@@ -1,26 +1,28 @@
 .hero {
+  /* background */
   position: relative;
+  z-index: 0;
   isolation: isolate;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: clamp(520px, 56vw, 920px);
   overflow: hidden;
-  background: var(--drop-ground) center / cover no-repeat;
+  background: var(--drop-ground);
   text-decoration: none;
 }
 
-.video {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+.stage {
+  position: relative;
+  display: grid;
+  flex: 6 1 0;
+  place-items: center;
+  min-height: 0;
 }
 
 .veil {
+  /* canvas */
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   top: 50%;
   left: 50%;
   height: 90%;
@@ -33,13 +35,13 @@
 .veil :global(.shoe-mask-canvas) {
   position: absolute;
   inset: 0;
+  z-index: 1;
+  display: block;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  display: block;
   background: transparent;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.9s ease;
 }
 
@@ -49,61 +51,260 @@
 
 @media (prefers-reduced-motion: reduce) {
   .veil :global(.shoe-mask-canvas) {
-    transition: none;
     opacity: 1;
+    transition: none;
   }
 }
 
-.logo {
+.pay {
+  /* text */
   position: absolute;
-  z-index: 3;
+  top: 50%;
+  right: 28px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transform: translateY(-50%);
+  color: #fff;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.payLabel {
+  flex: none;
+  height: 64px;
+  font: 600 11px/1 var(--font-sans);
+  letter-spacing: 0.04em;
+  writing-mode: vertical-rl;
+}
+
+.payLine {
+  width: 1px;
+  height: 48px;
+  background: currentColor;
+}
+
+.identity {
+  /* text */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 2.8 1 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+  min-height: min-content;
+  padding: 8px var(--gutter-r) 16px var(--gutter);
+  pointer-events: none;
+}
+
+.logo {
+  /* text */
+  position: absolute;
+  z-index: 2;
+  bottom: calc(48px + 16px);
   left: var(--gutter);
-  bottom: 28px;
+  margin: 0;
   pointer-events: none;
 }
 
 .cta {
-  position: absolute;
-  z-index: 3;
-  bottom: 7%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--on-drop-ground);
-  font-size: 13px;
-  font-weight: 500;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border: 0;
+  border-radius: 0;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 150ms ease-out, color 150ms ease-out;
 }
 
-.hero:hover .cta {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.cta svg {
+  width: 16px;
+  height: 16px;
 }
 
-.pay {
-  position: absolute;
-  top: 50%;
-  right: calc(var(--gutter-r) - 24px);
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: center;
+.cta:hover,
+.cta:focus-visible {
+  background: var(--surface);
+  color: var(--on-accent);
+}
+
+.cta:focus-visible {
+  outline: 2px solid var(--on-drop-ground);
+  outline-offset: 2px;
+}
+
+.trust {
+  /* strip */
+  position: relative;
   z-index: 3;
-  color: var(--on-drop-ground);
-  font: 600 11px/1 var(--font-sans);
-  letter-spacing: 0.04em;
-  opacity: 0.9;
+  flex: 0 0 48px;
+  height: 48px;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  background: #000;
+  pointer-events: none;
+}
+
+.trustTrack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.trustRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(255, 255, 255, 0.8);
+  font: 600 11px/16px var(--font-sans);
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.trustRow li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 100%;
+  padding: 14px 12px;
+}
+
+.trustRow li + li {
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.trustRule {
+  display: none;
+}
+
+.trustRow + .trustRow {
+  display: none;
 }
 
 @media (max-width: 899px) {
   .hero {
     height: min(100vw, 560px);
   }
+}
 
+@media (max-width: 599px) {
   .pay {
+    display: none;
+  }
+
+  .identity {
+    align-items: stretch;
+    padding-bottom: calc(110px + 16px + 12px);
+  }
+
+  .cta {
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  .trustTrack {
+    width: max-content;
+    animation: trust-marquee 36s linear infinite;
+  }
+
+  .trustRow,
+  .trustRow + .trustRow {
+    display: flex;
+    justify-content: flex-start;
+    width: max-content;
+    gap: 0;
+  }
+
+  .trustRow li {
+    height: 48px;
+    padding: 14px 0 14px 28px;
+    white-space: nowrap;
+  }
+
+  .trustRow li + li {
+    border-left: 0;
+  }
+
+  .trustRule {
+    display: block;
+    width: 1px;
+    height: 10px;
+    margin-right: 28px;
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes trust-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trustTrack {
+    width: 100%;
+    animation: none;
+    transform: none;
+  }
+
+  .trustRow + .trustRow {
+    display: none;
+  }
+
+  .trustRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .trustRow li {
+    padding: 14px 8px;
+    white-space: nowrap;
+  }
+
+  .trustRow li + li {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .trustRule {
     display: none;
   }
 }
 
-@media (max-width: 720px) {
-  .cta {
-    bottom: calc(28px + 2 * 60px * 0.92 + 18px);
+@media (max-width: 599px) and (prefers-reduced-motion: reduce) {
+  .trustRow {
+    font-size: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .trustRow li {
+    padding: 14px 4px;
   }
 }

@@ -1,0 +1,39 @@
+.span {
+  grid-column: 1 / -1;
+}
+
+.back {
+  justify-self: start;
+  color: var(--ink);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.media.media {
+  overflow: hidden;
+  background: #fff;
+}
+
+.frame {
+  position: absolute;
+  inset: 14%;
+}
+
+.photo {
+  object-fit: contain;
+}
+
+.placeholder {
+  padding: 16px;
+  color: var(--ink-2);
+  font-size: 11.5px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+}

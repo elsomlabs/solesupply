@@ -60,7 +60,9 @@ export function EditorialFeature({ title, weight, body, ctaHref, images }: Edito
                 key={index}
                 className={`${styles.stageCard} ${index === 1 ? styles.main : styles.side}`}
               >
-                <img src={image.src} alt={image.alt} style={{ opacity: fading ? 0 : 1 }} />
+                {image.src ? (
+                  <img src={image.src} alt={image.alt} style={{ opacity: fading ? 0 : 1 }} />
+                ) : null}
               </div>
             ))}
           </div>
