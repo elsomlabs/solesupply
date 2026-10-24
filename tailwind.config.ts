@@ -22,6 +22,8 @@ const config: Config = {
         "drop-ground": "var(--drop-ground)",
         "on-drop-ground": "var(--on-drop-ground)",
         sale: "var(--sale)",
+        accent: "var(--accent)",
+        "on-accent": "var(--on-accent)",
         focus: "var(--focus)",
       },
       fontFamily: {
