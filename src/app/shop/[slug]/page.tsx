@@ -8,12 +8,28 @@ import layout from "@/app/sneakers/[id]/page.module.css";
 import { ShopPurchase } from "@/components/shop/ShopPurchase";
 import { ApparelPurchase } from "@/components/shop/ApparelPurchase";
 import { ProductDetails } from "@/components/shop/ProductDetails";
-import { getAllItems, getItemBySlug } from "../../../../lib/catalog";
+import { SIZE_LABELS, getAllItems, getItemBySlug, getLowestSizePriceUsd, type CatalogItem } from "../../../../lib/catalog";
 import { formatGbp as formatUsdAsGbp, toGbp } from "../../../../lib/currency";
 import { formatGbp, getAllProducts, getLowestPrice, getProductBySlug, getProductImage } from "../../../../lib/products";
 import styles from "./page.module.css";
 
 type Params = { slug: string };
+
+function apparelSizes(item: CatalogItem) {
+  if (item.sizePricesUsd) {
+    return SIZE_LABELS.flatMap((label) => {
+      const usd = item.sizePricesUsd?.[label];
+      if (typeof usd !== "number") return [];
+      return [{ size: label, gbp: toGbp(usd), label: formatUsdAsGbp(usd) }];
+    });
+  }
+  if (item.waistPricesUsd) {
+    return Object.entries(item.waistPricesUsd)
+      .sort(([a], [b]) => Number(a) - Number(b))
+      .map(([size, usd]) => ({ size, gbp: toGbp(usd), label: formatUsdAsGbp(usd) }));
+  }
+  return [];
+}
 
 export function generateStaticParams() {
   const seen = new Set<string>();
@@ -69,6 +85,11 @@ export default function ShopProductPage({ params }: { params: Params }) {
             image={item.image}
             price={toGbp(item.priceUsd)}
             priceLabel={formatUsdAsGbp(item.priceUsd)}
+            fromLabel={(() => {
+              const lowest = getLowestSizePriceUsd(item);
+              return lowest === null ? undefined : `From ${formatUsdAsGbp(lowest)}`;
+            })()}
+            sizes={apparelSizes(item)}
           />
           <ProductDetails id={item.id} name={item.name} />
         </div>

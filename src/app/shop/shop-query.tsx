@@ -3,8 +3,9 @@
 import { useSyncExternalStore } from "react";
 import { ShopListing, readShopQuery } from "./listing";
 
-function subscribe() {
-  return () => {};
+function subscribe(onStoreChange: () => void) {
+  window.addEventListener("popstate", onStoreChange);
+  return () => window.removeEventListener("popstate", onStoreChange);
 }
 
 function getSearch() {
@@ -18,10 +19,11 @@ function getServerSearch() {
 export function ShopQuery() {
   const search = useSyncExternalStore(subscribe, getSearch, getServerSearch);
   const params = new URLSearchParams(search);
-  const { category, sort } = readShopQuery({
+  const { category, sort, q } = readShopQuery({
     category: params.get("category") ?? undefined,
     sort: params.get("sort") ?? undefined,
+    q: params.get("q") ?? undefined,
   });
 
-  return <ShopListing category={category} sort={sort} />;
+  return <ShopListing category={category} sort={sort} q={q} />;
 }

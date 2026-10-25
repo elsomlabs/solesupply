@@ -5,8 +5,9 @@
 
 .footIn {
   display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
+  grid-template-columns: 1.2fr 0.9fr 0.9fr minmax(280px, 541px);
   gap: 32px;
+  align-items: start;
   padding-block: 48px;
   padding-left: var(--gutter);
   padding-right: var(--gutter-r);
@@ -58,21 +59,70 @@
   margin-top: 8px;
 }
 
+.aside {
+  justify-self: end;
+  width: 100%;
+  max-width: 541px;
+}
+
+.storefront {
+  display: block;
+  width: 100%;
+  max-width: 541px;
+  height: auto;
+  aspect-ratio: 541 / 320;
+  object-fit: cover;
+}
+
 .note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
   border-top: 1px solid var(--line);
   padding-block: 16px;
   padding-left: var(--gutter);
   padding-right: var(--gutter-r);
   font-size: 11px;
+  line-height: 16px;
   color: var(--ink-muted);
 }
 
-@media (max-width: 899px) {
+.note p {
+  margin: 0;
+  max-width: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.note .credit {
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.creditBrand {
+  color: #f97316;
+}
+
+@media (max-width: 1100px) {
   .footIn {
     grid-template-columns: 1fr 1fr;
   }
 
-  .footIn > :first-child {
+  .aside {
     grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 599px) {
+  .footIn {
+    grid-template-columns: 1fr;
   }
 }

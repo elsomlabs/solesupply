@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { BrandStrip } from "@/components/home/BrandStrip";
-import { EditorialFeature } from "@/components/home/EditorialFeature";
 import { CenteredHeader } from "@/components/product/CenteredHeader";
 import { ProductRow } from "@/components/product/ProductRow";
 import { getItemsByCategory } from "../../lib/catalog";
 import { formatGbp as formatCatalogGbp } from "../../lib/currency";
 import { formatGbp, getAllProducts, getLowestPrice, getProductImage } from "../../lib/products";
+import editorial from "@/components/home/EditorialFeature.module.css";
 import styles from "@/components/product/product.module.css";
 
 const laces = getItemsByCategory("shoe-laces").sort((a, b) => a.rank - b.rank);
@@ -67,21 +67,13 @@ export function LatestSneakers() {
   );
 }
 
+export function HomeEditorial() {
+  return <section className={`${editorial.ed} ${editorial.blank}`} aria-hidden="true" />;
+}
+
 export function HomeBelow() {
   return (
-    <>
-      <EditorialFeature
-        title="text"
-        weight="heavy"
-        body="text"
-        ctaHref="#"
-        images={[
-          { src: "", alt: "" },
-          { src: "", alt: "" },
-          { src: "", alt: "" },
-        ]}
-      />
-      <section className={`${styles.sec} ${styles.wrap}`} aria-labelledby="h-laces">
+    <section className={`${styles.sec} ${styles.wrap}`} aria-labelledby="h-laces">
         <ProductRow
           variant="laces"
           header={(scroll) => (
@@ -106,7 +98,6 @@ export function HomeBelow() {
             </Link>
           ))}
         </ProductRow>
-      </section>
-    </>
+    </section>
   );
 }

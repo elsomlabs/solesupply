@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { UnionJack } from "@/components/UnionJack";
@@ -11,6 +11,7 @@ import styles from "./SiteHeader.module.css";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
+  { label: "Shop all", href: "/shop/" },
   { label: "Sneakers", href: "/sneakers/" },
   { label: "Apparel", href: "/apparel/" },
   { label: "Laces", href: "/shop/?category=shoe-laces" },
@@ -18,10 +19,11 @@ const NAV_LINKS = [
 ] as const;
 
 function isCurrent(pathname: string, href: string) {
-  if (!href.startsWith("/")) return false;
+  if (!href.startsWith("/") || href.includes("?")) return false;
   const path = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
   const target = href.length > 1 && href.endsWith("/") ? href.slice(0, -1) : href;
   if (target === "/") return path === "/";
+  if (target === "/shop") return path === "/shop";
   return path === target || path.startsWith(`${target}/`);
 }
 
@@ -59,7 +61,6 @@ function Glyph({ children, strokeWidth = 1.5 }: { children: ReactNode; strokeWid
 
 export function SiteHeader() {
   const { count, lines, remove, reveal } = useCart();
-  const router = useRouter();
   const [bagOpen, setBagOpen] = useState(false);
   const [bagEntered, setBagEntered] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -96,7 +97,8 @@ export function SiteHeader() {
     event.preventDefault();
     const query = searchRef.current?.value.trim() ?? "";
     closeSearch();
-    router.push(`/shop/?q=${encodeURIComponent(query)}`);
+    const href = query ? `/shop/?q=${encodeURIComponent(query)}` : "/shop/";
+    window.location.assign(href);
   }
 
   useEffect(() => {
@@ -258,6 +260,11 @@ export function SiteHeader() {
         </nav>
         <Link className={styles.mark} href="/" aria-label="SoleSupply home">
           Sole Supply
+          <span className={styles.period} aria-hidden="true">
+            <svg viewBox="0 0 12 14" focusable="false">
+              <polygon points="6,0.4 11.6,3.6 11.6,10.4 6,13.6 0.4,10.4 0.4,3.6" />
+            </svg>
+          </span>
         </Link>
         <div className={styles.side}>
           <div className={styles.utils}>
@@ -297,7 +304,7 @@ export function SiteHeader() {
       </div>
       {searchOpen ? (
         <form className={searchEntered ? `${styles.search} ${styles.searchOpen}` : styles.search} onSubmit={submitSearch}>
-          <input ref={searchRef} type="search" name="q" placeholder="SEARCH SNEAKERS" aria-label="Search sneakers" />
+          <input ref={searchRef} type="search" name="q" placeholder="SEARCH" aria-label="Search the store" />
           <button type="button" aria-label="Close search" onClick={closeSearch}>
             <Glyph strokeWidth={1.75}>
               <path d="M6 6l12 12M18 6L6 18" />

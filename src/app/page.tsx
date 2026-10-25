@@ -1,6 +1,6 @@
 import { DropHero } from "@/components/home/DropHero";
 import { TopSellers } from "@/components/shop/TopSellers";
-import { HomeBelow, HomeBrands, LatestSneakers } from "./home-below";
+import { HomeBelow, HomeBrands, HomeEditorial, LatestSneakers } from "./home-below";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <DropHero href="/shop/" ctaLabel="Shop now" />
       <HomeBrands />
       <LatestSneakers />
+      <HomeEditorial />
       <TopSellers />
       <HomeBelow />
     </main>

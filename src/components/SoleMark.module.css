@@ -34,3 +34,19 @@
 .center {
   text-align: center;
 }
+
+.period {
+  display: inline-block;
+  width: 0.28em;
+  height: 0.32em;
+  margin-left: 0.06em;
+  color: var(--accent);
+  vertical-align: 0.02em;
+}
+
+.period svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}

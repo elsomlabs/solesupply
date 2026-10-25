@@ -24,6 +24,13 @@ export function SoleMark({
       {accent ? <span className={styles.accent}>Sole</span> : "Sole"}
       <br />
       Supply
+      {size === "hero" ? (
+        <span className={styles.period} aria-hidden="true">
+          <svg viewBox="0 0 12 14" focusable="false">
+            <polygon points="6,0.4 11.6,3.6 11.6,10.4 6,13.6 0.4,10.4 0.4,3.6" />
+          </svg>
+        </span>
+      ) : null}
     </span>
   );
 }

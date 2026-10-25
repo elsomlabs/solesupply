@@ -213,6 +213,7 @@ function normaliseName(value: string): string {
     .replace(/\bmen's\b/g, " ")
     .replace(/[^a-z0-9\s]+/g, "")
     .replace(/\bwomens\b/g, " ")
+    .replace(/\bair jordan\b/g, "jordan")
     .replace(/\s+/g, " ")
     .trim();
 }

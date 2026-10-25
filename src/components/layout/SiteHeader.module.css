@@ -88,6 +88,9 @@
 .mark {
   grid-area: mark;
   justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.08em;
   color: var(--ink);
   font-family: var(--font-display);
   font-size: clamp(18px, 4.8vw, 22px);
@@ -99,6 +102,20 @@
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.period {
+  display: inline-block;
+  width: 0.28em;
+  height: 0.32em;
+  color: var(--accent);
+}
+
+.period svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .utils {
@@ -412,14 +429,14 @@
   background: var(--action-hover);
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .hdrIn {
     grid-template-areas: "nav mark side";
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1439px) {
   .hdrIn {
     grid-template-areas:
       ". mark side"

@@ -4,6 +4,11 @@
   padding-right: var(--gutter-r);
 }
 
+.blank {
+  min-height: 320px;
+  padding-bottom: 96px;
+}
+
 .edIn {
   max-width: 1120px;
   margin: 0 auto;
