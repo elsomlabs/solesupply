@@ -198,6 +198,7 @@ const productDetails = productDetailsFile.items as Record<string, ProductDetails
 
 type SneakerDetail = {
   name: string;
+  aliases?: string[];
   description: string;
   styleCode?: string;
   colour?: string;
@@ -210,10 +211,12 @@ const sneakerDetails = sneakerDetailsFile.items as Record<string, SneakerDetail>
 function normaliseName(value: string): string {
   return value
     .toLowerCase()
-    .replace(/\bmen's\b/g, " ")
-    .replace(/[^a-z0-9\s]+/g, "")
-    .replace(/\bwomens\b/g, " ")
-    .replace(/\bair jordan\b/g, "jordan")
+    .replace(/&/g, "and")
+    .replace(/\brnnr\b/g, "rnr")
+    .replace(/\bair(?=\s+jordan\b)/g, " ")
+    .replace(/\bmen'?s\b/g, " ")
+    .replace(/\bwomen'?s\b/g, " ")
+    .replace(/[^a-z0-9\s]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -228,25 +231,26 @@ function toProductDetails(entry: SneakerDetail): ProductDetails {
   };
 }
 
+function sneakerDetailLabels(entry: SneakerDetail): string[] {
+  return [entry.name, ...(entry.aliases ?? [])];
+}
+
 function sneakerDetailsByName(name: string): { key: string; entry: SneakerDetail } | null {
   const target = normaliseName(name);
-  const matches = Object.entries(sneakerDetails).filter(([, entry]) => normaliseName(entry.name) === target);
+  const matches = Object.entries(sneakerDetails).filter(([, entry]) =>
+    sneakerDetailLabels(entry).some((label) => normaliseName(label) === target),
+  );
   if (matches.length !== 1) return null;
   const [key, entry] = matches[0];
   return { key, entry };
 }
 
+/** `id` is the apparel catalog id, or the sneaker product slug (StockX-style). */
 function matchedSneakerDetail(id: string, name?: string): { key: string; entry: SneakerDetail } | null {
   const bySlug = sneakerDetails[id];
   if (bySlug) return { key: id, entry: bySlug };
   if (!name) return null;
-  const byName = sneakerDetailsByName(name);
-  if (!byName) return null;
-  const claimants = getAllProducts().filter(
-    (product) => product.slug !== id && !sneakerDetails[product.slug] && normaliseName(product.name) === normaliseName(name),
-  );
-  if (claimants.length > 0) return null;
-  return byName;
+  return sneakerDetailsByName(name);
 }
 
 export function getProductDetails(id: string, name?: string): ProductDetails | null {

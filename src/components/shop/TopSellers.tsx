@@ -10,8 +10,8 @@ export function TopSellers() {
     <section className={styles.section} aria-labelledby="top-sellers">
       <div className={styles.head}>
         <h2 id="top-sellers">Top Sellers</h2>
-        <Link className={styles.shopAll} href="/shop/">
-          Shop all
+        <Link className={styles.shopAll} href="/apparel/">
+          Shop all apparel
         </Link>
       </div>
       <ProductGrid items={items} />

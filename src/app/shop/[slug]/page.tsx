@@ -105,8 +105,8 @@ export default function ShopProductPage({ params }: { params: Params }) {
 
   return (
     <main className={layout.page}>
-      <Link href="/shop/" className={`${styles.back} ${styles.span}`}>
-        Back to shop
+      <Link href="/sneakers/" className={`${styles.back} ${styles.span}`}>
+        Back to sneakers
       </Link>
       <div className={`${layout.media} ${styles.media}`}>
         {image ? (

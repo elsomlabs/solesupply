@@ -1,6 +1,6 @@
 {
   "source": "StockX product detail pages (facts only; descriptions are original wording), pulled 2026-10-24",
-  "note": "Keyed by StockX slug. releaseDate omitted where StockX only showed a 01/01 placeholder. retailPriceUsd is original retail in USD.",
+  "note": "Keyed by StockX slug. 'aliases' lists the names the storefront may use for the same product. releaseDate omitted where StockX only showed a 01/01 placeholder. retailPriceUsd is original retail in USD.",
   "items": {
     "adidas-samba-og-cloud-white-core-black": {
       "name": "adidas Samba OG Cloud White Core Black",
@@ -23,7 +23,10 @@
       "styleCode": "ID4126",
       "colour": "MX Cinder",
       "retailPriceUsd": 90,
-      "releaseDate": "2023-05-31"
+      "releaseDate": "2023-05-31",
+      "aliases": [
+        "adidas Yeezy Foam RNR MX Cinder"
+      ]
     },
     "adidas-yeezy-foam-rnnr-mineral-blue": {
       "name": "adidas Yeezy Foam RNNR Mineral Blue",
@@ -62,15 +65,21 @@
       "styleCode": "DZ5485-612",
       "colour": "Varsity Red/Black-Sail-Muslin",
       "retailPriceUsd": 180,
-      "releaseDate": "2022-11-19"
+      "releaseDate": "2022-11-19",
+      "aliases": [
+        "Jordan 1 Retro High OG Chicago Lost and Found"
+      ]
     },
     "air-jordan-1-retro-high-og-shadow-brown": {
-      "name": "Air Jordan 1 Retro High OG Shadow Brown",
+      "name": "Jordan 1 Retro High OG Love Letter",
       "description": "Jordan 1 High OG in an earthy palette of shadow brown, soft pearl, British tan and team red.",
       "styleCode": "DZ5485-201",
       "colour": "Shadow Brown/Soft Pearl/Light British Tan/Team Red",
       "retailPriceUsd": 185,
-      "releaseDate": "2026-08-01"
+      "releaseDate": "2026-08-01",
+      "aliases": [
+        "Air Jordan 1 Retro High OG Shadow Brown"
+      ]
     },
     "air-jordan-1-retro-high-dark-mocha": {
       "name": "Air Jordan 1 Retro High Dark Mocha",
@@ -142,7 +151,10 @@
       "styleCode": "CU9225-001",
       "colour": "Black/Black-Black",
       "retailPriceUsd": 118,
-      "releaseDate": "2020-03-05"
+      "releaseDate": "2020-03-05",
+      "aliases": [
+        "Nike Air Force 1 Low Supreme Black"
+      ]
     },
     "nike-air-force-1-low-supreme-box-logo-white": {
       "name": "Nike Air Force 1 Low Supreme Box Logo White",
@@ -150,7 +162,10 @@
       "styleCode": "CU9225-100",
       "colour": "White/White-White",
       "retailPriceUsd": 118,
-      "releaseDate": "2020-03-05"
+      "releaseDate": "2020-03-05",
+      "aliases": [
+        "Nike Air Force 1 Low Supreme White"
+      ]
     },
     "nike-air-max-95-og-big-bubble-pink-foam-womens": {
       "name": "Nike Air Max 95 OG Big Bubble Pink Foam (Women's)",
@@ -174,15 +189,21 @@
       "styleCode": "FV2291-001",
       "colour": "Black/Black/White",
       "retailPriceUsd": 170,
-      "releaseDate": "2023-10-15"
+      "releaseDate": "2023-10-15",
+      "aliases": [
+        "Nike Air More Uptempo 96 Black White (2023/2026)"
+      ]
     },
     "nike-caitlin-1-hot-punch-womens": {
-      "name": "Nike Caitlin 1 Hot Punch (Women's)",
+      "name": "Nike Caitlin 1 Midnight Fever (Women's)",
       "description": "Caitlin Clark's first signature basketball shoe in a Hot Punch and Neo Pink finish, with an Opticast upper and forefoot Air Zoom unit.",
       "styleCode": "IH7423-600 / IH7421-600",
       "colour": "Hot Punch/Neo Pink/Black/Laser Crimson/Racer Blue",
       "retailPriceUsd": 140,
-      "releaseDate": "2026-10-14"
+      "releaseDate": "2026-10-14",
+      "aliases": [
+        "Nike Caitlin 1 Hot Punch (Women's)"
+      ]
     },
     "nike-kd-6-peanut-butter-and-jelly-pbj-2026": {
       "name": "Nike KD 6 Peanut Butter & Jelly (PBJ) (2026)",
@@ -239,6 +260,54 @@
       "colour": "Black",
       "retailPriceUsd": 125,
       "releaseDate": "2025-09-17"
+    },
+    "air-jordan-4-retro-black-cat-2025": {
+      "name": "Jordan 4 Retro Black Cat (2025)",
+      "description": "Jordan 4 in tonal black with a soft nubuck upper and Nike Air branding on the heel.",
+      "styleCode": "FV5029-010",
+      "colour": "Black/Black/Light Graphite",
+      "retailPriceUsd": 220,
+      "releaseDate": "2025-11-28"
+    },
+    "adidas-yeezy-slide-slate-grey": {
+      "name": "adidas Yeezy Slide Slate Grey",
+      "description": "One-piece moulded EVA foam Yeezy Slide in Slate Grey with a textured outsole for grip.",
+      "styleCode": "ID2350",
+      "colour": "Slate Grey",
+      "retailPriceUsd": 70,
+      "releaseDate": "2024-03-21"
+    },
+    "nike-zoom-vomero-5-photon-dust-metallic-silver-w": {
+      "name": "Nike Zoom Vomero 5 Photon Dust Metallic Silver (Women's)",
+      "description": "Zoom Vomero 5 with a breathable fabric upper in Photon Dust, chrome, gridiron and sail, cushioned by Zoom Air.",
+      "styleCode": "FD0884-025",
+      "colour": "Photon Dust/Chrome/Gridiron/Sail",
+      "retailPriceUsd": 160,
+      "releaseDate": "2023-03-01"
+    },
+    "adidas-yeezy-foam-rnnr-onyx": {
+      "name": "adidas Yeezy Foam RNR Onyx",
+      "description": "The adidas Yeezy Foam RNR Onyx arrives with an Onyx, oval-cut foam construction made of part EVA and algae. At the base, a cushioned footbed offers comfort and support, while a sculptural sole with deep treads provides traction.",
+      "styleCode": "HP8739",
+      "colour": "Onyx/Onyx/Onyx",
+      "retailPriceUsd": 90,
+      "releaseDate": "2024-03-07"
+    },
+    "air-jordan-4-retro-thunder-2023": {
+      "name": "Jordan 4 Retro Thunder (2023)",
+      "description": "Jordan 4 in premium black nubuck with Tour Yellow on the midsole, lace eyelets and tongue.",
+      "styleCode": "DH6927-017",
+      "colour": "Black/White-Tour Yellow",
+      "retailPriceUsd": 210,
+      "releaseDate": "2023-05-13"
+    },
+    "air-jordan-1-retro-high-black-white-light-smoke-grey": {
+      "name": "Jordan 1 Retro High Shadow 2.0",
+      "description": "Jordan 1 High with a black leather base, light smoke grey overlays, a Wings logo on the ankle wrap and a woven Nike Air tongue label.",
+      "styleCode": "555088-035",
+      "colour": "Black/White-Light Smoke Grey",
+      "retailPriceUsd": 170,
+      "releaseDate": "2021-05-15"
     }
   }
 }

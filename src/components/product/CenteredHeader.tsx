@@ -5,6 +5,7 @@ export type CenteredHeaderProps = {
   id: string;
   title: string;
   viewAllHref: string;
+  viewAllLabel?: string;
   previousDisabled: boolean;
   nextDisabled: boolean;
   onPrevious: () => void;
@@ -15,6 +16,7 @@ export function CenteredHeader({
   id,
   title,
   viewAllHref,
+  viewAllLabel = "View all",
   previousDisabled,
   nextDisabled,
   onPrevious,
@@ -43,7 +45,7 @@ export function CenteredHeader({
       </div>
       <div>
         <Link className={styles.viewAll} href={viewAllHref}>
-          View all
+          {viewAllLabel}
         </Link>
       </div>
     </div>

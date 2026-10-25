@@ -1,5 +1,5 @@
 .section {
-  padding: 64px var(--gutter-r) 0 var(--gutter);
+  padding: 24px var(--gutter-r) 0 var(--gutter);
 }
 
 .head {
